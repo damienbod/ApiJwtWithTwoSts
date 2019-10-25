@@ -1,0 +1,95 @@
+2019-10-25 16:40:14.478 +02:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 16:40:14.779 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2019-10-25 16:40:14.779 +02:00 [INF] Hosting environment: Development
+2019-10-25 16:40:14.779 +02:00 [INF] Content root path: C:\git\ApiJwtWithTwoSts\WebApi
+2019-10-25 16:40:14.828 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44342/api/values  
+2019-10-25 16:40:15.141 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10501: Signature validation failed. Unable to match key: 
+kid: '5626CE6A8F4F5FCD79C6642345282CA76D337548'.
+Exceptions caught:
+ ''. 
+token: '{"alg":"RS256","kid":"5626CE6A8F4F5FCD79C6642345282CA76D337548","typ":"at+jwt","x5t":"VibOao9PX815xmQjRSgsp20zdUg"}.{"nbf":1572014410,"exp":1572018010,"iss":"https://localhost:44367","aud":"ProtectedApiResource","client_id":"CC","scope":["scope_used_for_api_in_protected_zone"]}'.
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateSignature(String token, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2019-10-25 16:40:15.180 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10501: Signature validation failed. Unable to match key: 
+kid: '5626CE6A8F4F5FCD79C6642345282CA76D337548'.
+Exceptions caught:
+ ''. 
+token: '{"alg":"RS256","kid":"5626CE6A8F4F5FCD79C6642345282CA76D337548","typ":"at+jwt","x5t":"VibOao9PX815xmQjRSgsp20zdUg"}.{"nbf":1572014410,"exp":1572018010,"iss":"https://localhost:44367","aud":"ProtectedApiResource","client_id":"CC","scope":["scope_used_for_api_in_protected_zone"]}'.
+2019-10-25 16:40:15.187 +02:00 [INF] Authorization failed.
+2019-10-25 16:40:15.202 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2019-10-25 16:40:15.222 +02:00 [INF] Request finished in 396.8225ms 401 
+2019-10-25 16:52:39.385 +02:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 16:52:39.705 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2019-10-25 16:52:39.705 +02:00 [INF] Hosting environment: Development
+2019-10-25 16:52:39.705 +02:00 [INF] Content root path: C:\git\ApiJwtWithTwoSts\WebApi
+2019-10-25 16:52:39.758 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44342/api/values  
+2019-10-25 16:52:40.056 +02:00 [INF] Successfully validated the token.
+2019-10-25 16:52:40.062 +02:00 [INF] Authorization was successful.
+2019-10-25 16:52:40.063 +02:00 [INF] Executing endpoint 'WebApi.Controllers.ValuesController.Get (WebApi)'
+2019-10-25 16:52:40.090 +02:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[System.String] Get() on controller WebApi.Controllers.ValuesController (WebApi).
+2019-10-25 16:52:42.005 +02:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-10-25 16:52:42.035 +02:00 [INF] Executed action WebApi.Controllers.ValuesController.Get (WebApi) in 1937.2904ms
+2019-10-25 16:52:42.039 +02:00 [INF] Executed endpoint 'WebApi.Controllers.ValuesController.Get (WebApi)'
+2019-10-25 16:52:42.041 +02:00 [INF] Request finished in 2285.5491ms 200 application/json; charset=utf-8
+2019-10-25 16:55:20.388 +02:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 16:55:20.770 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2019-10-25 16:55:20.779 +02:00 [INF] Hosting environment: Development
+2019-10-25 16:55:20.779 +02:00 [INF] Content root path: C:\git\ApiJwtWithTwoSts\WebApi
+2019-10-25 16:55:20.839 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44342/api/values  
+2019-10-25 16:55:21.256 +02:00 [INF] Successfully validated the token.
+2019-10-25 16:55:21.263 +02:00 [INF] Authorization was successful.
+2019-10-25 16:55:21.263 +02:00 [INF] Executing endpoint 'WebApi.Controllers.ValuesController.Get (WebApi)'
+2019-10-25 16:55:21.283 +02:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[System.String] Get() on controller WebApi.Controllers.ValuesController (WebApi).
+2019-10-25 16:55:23.050 +02:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-10-25 16:55:23.081 +02:00 [INF] Executed action WebApi.Controllers.ValuesController.Get (WebApi) in 1791.8276ms
+2019-10-25 16:55:23.085 +02:00 [INF] Executed endpoint 'WebApi.Controllers.ValuesController.Get (WebApi)'
+2019-10-25 16:55:23.088 +02:00 [INF] Request finished in 2253.399ms 200 application/json; charset=utf-8
+2019-10-25 16:55:35.190 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44342/api/values  
+2019-10-25 16:55:35.217 +02:00 [INF] Successfully validated the token.
+2019-10-25 16:55:35.228 +02:00 [INF] Authorization was successful.
+2019-10-25 16:55:35.228 +02:00 [INF] Executing endpoint 'WebApi.Controllers.ValuesController.Get (WebApi)'
+2019-10-25 16:55:35.229 +02:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[System.String] Get() on controller WebApi.Controllers.ValuesController (WebApi).
+2019-10-25 16:55:37.360 +02:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-10-25 16:55:37.361 +02:00 [INF] Executed action WebApi.Controllers.ValuesController.Get (WebApi) in 2132.3004ms
+2019-10-25 16:55:37.362 +02:00 [INF] Executed endpoint 'WebApi.Controllers.ValuesController.Get (WebApi)'
+2019-10-25 16:55:37.362 +02:00 [INF] Request finished in 2172.2828ms 200 application/json; charset=utf-8
+2019-10-25 17:05:03.911 +02:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 17:05:04.181 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2019-10-25 17:05:04.181 +02:00 [INF] Hosting environment: Development
+2019-10-25 17:05:04.181 +02:00 [INF] Content root path: C:\git\ApiJwtWithTwoSts\WebApi
+2019-10-25 17:05:04.228 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44342/api/values  
+2019-10-25 17:05:04.845 +02:00 [INF] Successfully validated the token.
+2019-10-25 17:05:04.891 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenInvalidIssuerException: IDX10205: Issuer validation failed. Issuer: 'https://localhost:44318'. Did not match: validationParameters.ValidIssuer: 'null' or validationParameters.ValidIssuers: 'https://localhost:44367'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuer(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateIssuer(String issuer, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2019-10-25 17:05:04.931 +02:00 [INF] Custom was not authenticated. Failure message: IDX10205: Issuer validation failed. Issuer: 'https://localhost:44318'. Did not match: validationParameters.ValidIssuer: 'null' or validationParameters.ValidIssuers: 'https://localhost:44367'.
+2019-10-25 17:05:04.935 +02:00 [INF] Authorization was successful.
+2019-10-25 17:05:04.935 +02:00 [INF] Executing endpoint 'WebApi.Controllers.ValuesController.Get (WebApi)'
+2019-10-25 17:05:04.954 +02:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[System.String] Get() on controller WebApi.Controllers.ValuesController (WebApi).
+2019-10-25 17:05:06.662 +02:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-10-25 17:05:06.695 +02:00 [INF] Executed action WebApi.Controllers.ValuesController.Get (WebApi) in 1734.3241ms
+2019-10-25 17:05:06.698 +02:00 [INF] Executed endpoint 'WebApi.Controllers.ValuesController.Get (WebApi)'
+2019-10-25 17:05:06.702 +02:00 [INF] Request finished in 2477.9149ms 200 application/json; charset=utf-8
+2019-10-25 17:05:19.078 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44342/api/values  
+2019-10-25 17:05:19.082 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenInvalidIssuerException: IDX10205: Issuer validation failed. Issuer: 'https://localhost:44367'. Did not match: validationParameters.ValidIssuer: 'null' or validationParameters.ValidIssuers: 'https://localhost:44318'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateIssuer(String issuer, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateIssuer(String issuer, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2019-10-25 17:05:19.083 +02:00 [INF] JWT was not authenticated. Failure message: IDX10205: Issuer validation failed. Issuer: 'https://localhost:44367'. Did not match: validationParameters.ValidIssuer: 'null' or validationParameters.ValidIssuers: 'https://localhost:44318'.
+2019-10-25 17:05:19.083 +02:00 [INF] Successfully validated the token.
+2019-10-25 17:05:19.084 +02:00 [INF] Authorization was successful.
+2019-10-25 17:05:19.084 +02:00 [INF] Executing endpoint 'WebApi.Controllers.ValuesController.Get (WebApi)'
+2019-10-25 17:05:19.084 +02:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing controller action with signature System.Collections.Generic.IEnumerable`1[System.String] Get() on controller WebApi.Controllers.ValuesController (WebApi).
+2019-10-25 17:05:20.705 +02:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2019-10-25 17:05:20.706 +02:00 [INF] Executed action WebApi.Controllers.ValuesController.Get (WebApi) in 1621.5990000000002ms
+2019-10-25 17:05:20.706 +02:00 [INF] Executed endpoint 'WebApi.Controllers.ValuesController.Get (WebApi)'
+2019-10-25 17:05:20.707 +02:00 [INF] Request finished in 1628.7938000000001ms 200 application/json; charset=utf-8

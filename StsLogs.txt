@@ -1,0 +1,256 @@
+2019-10-25 16:55:01.012 +02:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 16:55:01.745 +02:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2019-10-25 16:55:01.770 +02:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-10-25 16:55:01.776 +02:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-10-25 16:55:02.588 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2019-10-25 16:55:02.589 +02:00 [INF] Hosting environment: Development
+2019-10-25 16:55:02.589 +02:00 [INF] Content root path: C:\git\ApiJwtWithTwoSts\Sts
+2019-10-25 16:55:02.746 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/  
+2019-10-25 16:55:02.948 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44318/.well-known/openid-configuration  
+2019-10-25 16:55:03.421 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:03.428 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:03.497 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:03.502 +02:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity)'
+2019-10-25 16:55:03.571 +02:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller StsServerIdentity.Controllers.HomeController (StsServerIdentity).
+2019-10-25 16:55:04.006 +02:00 [INF] Executing action method StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity) - Validation state: "Valid"
+2019-10-25 16:55:04.035 +02:00 [INF] Executed action method StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 2.6983ms.
+2019-10-25 16:55:04.129 +02:00 [INF] Executing ViewResult, running view Index.
+2019-10-25 16:55:04.227 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-10-25 16:55:04.747 +02:00 [INF] Request finished in 1794.8329ms 200 application/json; charset=UTF-8
+2019-10-25 16:55:04.905 +02:00 [INF] Executed ViewResult - view Index executed in 788.532ms.
+2019-10-25 16:55:04.907 +02:00 [INF] Executed action StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity) in 1335.1872ms
+2019-10-25 16:55:04.907 +02:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity)'
+2019-10-25 16:55:04.912 +02:00 [INF] HTTP GET / responded 200 in 1468.3403 ms
+2019-10-25 16:55:04.917 +02:00 [INF] Request finished in 2180.4326ms 200 text/html; charset=utf-8
+2019-10-25 16:55:04.951 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/css/vendor.min.css?v=Ys2tdmcpFt9_JIC5cHGffY2F4u0Qd-RaZ-yE2vb3ODE  
+2019-10-25 16:55:04.961 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/css/site.min.css?v=9n42HB2zuqXKDsr8sMaXB5eFvO87SuAf1CjiV4cv1Fg  
+2019-10-25 16:55:04.962 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/css/fontawesome-free-5.4.1-web/css/all.min.css?v=TTtNXZn5LcwfHBadsA92qh3GXV2CGSr8_wTPigGKe6E  
+2019-10-25 16:55:04.964 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/js/vendor.min.js?v=fU2o7grwU_-VlGi02urdutdOf4zItrve6iWt8pM8rys  
+2019-10-25 16:55:04.965 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2019-10-25 16:55:04.977 +02:00 [INF] Sending file. Request path: '/js/site.min.js'. Physical path: 'C:\git\ApiJwtWithTwoSts\Sts\wwwroot\js\site.min.js'
+2019-10-25 16:55:04.987 +02:00 [INF] Sending file. Request path: '/css/site.min.css'. Physical path: 'C:\git\ApiJwtWithTwoSts\Sts\wwwroot\css\site.min.css'
+2019-10-25 16:55:04.988 +02:00 [INF] Request finished in 26.9719ms 200 text/css
+2019-10-25 16:55:04.990 +02:00 [INF] Request finished in 24.7724ms 200 application/javascript
+2019-10-25 16:55:04.992 +02:00 [INF] Sending file. Request path: '/css/fontawesome-free-5.4.1-web/css/all.min.css'. Physical path: 'C:\git\ApiJwtWithTwoSts\Sts\wwwroot\css\fontawesome-free-5.4.1-web\css\all.min.css'
+2019-10-25 16:55:04.993 +02:00 [INF] Request finished in 30.566100000000002ms 200 text/css
+2019-10-25 16:55:05.091 +02:00 [INF] Sending file. Request path: '/js/vendor.min.js'. Physical path: 'C:\git\ApiJwtWithTwoSts\Sts\wwwroot\js\vendor.min.js'
+2019-10-25 16:55:05.107 +02:00 [INF] Sending file. Request path: '/css/vendor.min.css'. Physical path: 'C:\git\ApiJwtWithTwoSts\Sts\wwwroot\css\vendor.min.css'
+2019-10-25 16:55:05.111 +02:00 [INF] Request finished in 147.08ms 200 application/javascript
+2019-10-25 16:55:05.111 +02:00 [INF] Request finished in 160.7657ms 200 text/css
+2019-10-25 16:55:05.249 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44318/.well-known/openid-configuration/jwks  
+2019-10-25 16:55:05.256 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-10-25 16:55:12.088 +02:00 [INF] Request finished in 6839.0846ms 200 application/jwk-set+json; charset=UTF-8
+2019-10-25 16:55:12.151 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/connect/authorize?client_id=codeflowpkceclient&redirect_uri=https%3A%2F%2Flocalhost%3A44360%2Fsignin-oidc&response_type=code&scope=openid%20profile%20offline_access&code_challenge=-Dv_oz4EsMmgMLUmreQMs4eoDKErqpl2hH3T4_NROMA&code_challenge_method=S256&response_mode=form_post&nonce=637076121121194497.ZjcxZWNmN2MtMjBjOC00MTU5LWJlYmUtNzZiMDIwZmFmMWY0ZGRhMjMwNWQtYjk4MS00MTZkLTg2YWEtZWNlNWM0Nzk4Nzg0&state=CfDJ8NL7t4oBOP5MutlmZOUr9kmb2ozn5Ni79pVngfI1hxTQ5ckvvGBu_NqhCDzNoHhUdPbzl4reUTD__N9g-UgS4qa4bHium9LtkTYbez-nVR1XR5U8fwz3bLKw7AKIsZ2RJppZUJJhxiK3Qkw2uRRkipR4DHa1n2NzSKkul56qMEbZBYEY0wBsosXk1cwgK9RtqcRkOabOkz6LbSFLiLwtpyqHAVJDxKkDSGt39o-CoWOqupycqNhxlzzFn53qWBF6ge86NHoKV8dQ3yX6ET7o7mbnokO0Qz_5QoxffGWgGF_ZwK9G1rv752X0GjhB3dOdsLkIr8PVvw8PVasUDjBPnWPH4jgwGPtjixiGXcp14irSgLUeL9Y8XCeaE_kFpuF8xw&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.5.0.0  
+2019-10-25 16:55:12.153 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:12.154 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:12.157 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2019-10-25 16:55:12.163 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:12.235 +02:00 [INF] Showing login: User is not authenticated
+2019-10-25 16:55:12.241 +02:00 [INF] Request finished in 90.10900000000001ms 302 
+2019-10-25 16:55:12.256 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dcodeflowpkceclient%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A44360%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520offline_access%26code_challenge%3D-Dv_oz4EsMmgMLUmreQMs4eoDKErqpl2hH3T4_NROMA%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637076121121194497.ZjcxZWNmN2MtMjBjOC00MTU5LWJlYmUtNzZiMDIwZmFmMWY0ZGRhMjMwNWQtYjk4MS00MTZkLTg2YWEtZWNlNWM0Nzk4Nzg0%26state%3DCfDJ8NL7t4oBOP5MutlmZOUr9kmb2ozn5Ni79pVngfI1hxTQ5ckvvGBu_NqhCDzNoHhUdPbzl4reUTD__N9g-UgS4qa4bHium9LtkTYbez-nVR1XR5U8fwz3bLKw7AKIsZ2RJppZUJJhxiK3Qkw2uRRkipR4DHa1n2NzSKkul56qMEbZBYEY0wBsosXk1cwgK9RtqcRkOabOkz6LbSFLiLwtpyqHAVJDxKkDSGt39o-CoWOqupycqNhxlzzFn53qWBF6ge86NHoKV8dQ3yX6ET7o7mbnokO0Qz_5QoxffGWgGF_ZwK9G1rv752X0GjhB3dOdsLkIr8PVvw8PVasUDjBPnWPH4jgwGPtjixiGXcp14irSgLUeL9Y8XCeaE_kFpuF8xw%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0  
+2019-10-25 16:55:12.259 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:12.259 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:12.261 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:12.263 +02:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.AccountController.Login (StsServerIdentity)'
+2019-10-25 16:55:12.282 +02:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(System.String) on controller StsServerIdentity.Controllers.AccountController (StsServerIdentity).
+2019-10-25 16:55:12.323 +02:00 [INF] Executing action method StsServerIdentity.Controllers.AccountController.Login (StsServerIdentity) - Validation state: "Valid"
+2019-10-25 16:55:12.329 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:12.335 +02:00 [INF] Executed action method StsServerIdentity.Controllers.AccountController.Login (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 11.950800000000001ms.
+2019-10-25 16:55:12.336 +02:00 [INF] Executing ViewResult, running view Login.
+2019-10-25 16:55:12.432 +02:00 [INF] Executed ViewResult - view Login executed in 96.8912ms.
+2019-10-25 16:55:12.433 +02:00 [INF] Executed action StsServerIdentity.Controllers.AccountController.Login (StsServerIdentity) in 150.392ms
+2019-10-25 16:55:12.433 +02:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.AccountController.Login (StsServerIdentity)'
+2019-10-25 16:55:12.433 +02:00 [INF] HTTP GET /Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dcodeflowpkceclient%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A44360%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520offline_access%26code_challenge%3D-Dv_oz4EsMmgMLUmreQMs4eoDKErqpl2hH3T4_NROMA%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637076121121194497.ZjcxZWNmN2MtMjBjOC00MTU5LWJlYmUtNzZiMDIwZmFmMWY0ZGRhMjMwNWQtYjk4MS00MTZkLTg2YWEtZWNlNWM0Nzk4Nzg0%26state%3DCfDJ8NL7t4oBOP5MutlmZOUr9kmb2ozn5Ni79pVngfI1hxTQ5ckvvGBu_NqhCDzNoHhUdPbzl4reUTD__N9g-UgS4qa4bHium9LtkTYbez-nVR1XR5U8fwz3bLKw7AKIsZ2RJppZUJJhxiK3Qkw2uRRkipR4DHa1n2NzSKkul56qMEbZBYEY0wBsosXk1cwgK9RtqcRkOabOkz6LbSFLiLwtpyqHAVJDxKkDSGt39o-CoWOqupycqNhxlzzFn53qWBF6ge86NHoKV8dQ3yX6ET7o7mbnokO0Qz_5QoxffGWgGF_ZwK9G1rv752X0GjhB3dOdsLkIr8PVvw8PVasUDjBPnWPH4jgwGPtjixiGXcp14irSgLUeL9Y8XCeaE_kFpuF8xw%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0 responded 200 in 173.7642 ms
+2019-10-25 16:55:12.433 +02:00 [INF] Request finished in 177.3991ms 200 text/html; charset=utf-8
+2019-10-25 16:55:12.473 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/css/vendor.min.css?v=Ys2tdmcpFt9_JIC5cHGffY2F4u0Qd-RaZ-yE2vb3ODE  
+2019-10-25 16:55:12.478 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/css/site.min.css?v=9n42HB2zuqXKDsr8sMaXB5eFvO87SuAf1CjiV4cv1Fg  
+2019-10-25 16:55:12.480 +02:00 [INF] The file /css/vendor.min.css was not modified
+2019-10-25 16:55:12.480 +02:00 [INF] The file /css/site.min.css was not modified
+2019-10-25 16:55:12.480 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/js/vendor.min.js?v=fU2o7grwU_-VlGi02urdutdOf4zItrve6iWt8pM8rys  
+2019-10-25 16:55:12.481 +02:00 [INF] The file /js/vendor.min.js was not modified
+2019-10-25 16:55:12.482 +02:00 [INF] Request finished in 3.8765ms 304 text/css
+2019-10-25 16:55:12.482 +02:00 [INF] Request finished in 8.7931ms 304 text/css
+2019-10-25 16:55:12.482 +02:00 [INF] Request finished in 1.4477ms 304 application/javascript
+2019-10-25 16:55:12.482 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2019-10-25 16:55:12.482 +02:00 [INF] The file /js/site.min.js was not modified
+2019-10-25 16:55:12.483 +02:00 [INF] Request finished in 0.9156000000000001ms 304 application/javascript
+2019-10-25 16:55:12.483 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/js/vendor-validation.min.js?v=aC1VG4hxjpPBvsiSEtLN0QLwkl8eUjtlXoDDVBBDQug  
+2019-10-25 16:55:12.489 +02:00 [INF] Sending file. Request path: '/js/vendor-validation.min.js'. Physical path: 'C:\git\ApiJwtWithTwoSts\Sts\wwwroot\js\vendor-validation.min.js'
+2019-10-25 16:55:12.490 +02:00 [INF] Request finished in 6.0711ms 200 application/javascript
+2019-10-25 16:55:31.346 +02:00 [INF] Request starting HTTP/2.0 POST https://localhost:44318/Account/Login?returnurl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dcodeflowpkceclient%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A44360%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520offline_access%26code_challenge%3D-Dv_oz4EsMmgMLUmreQMs4eoDKErqpl2hH3T4_NROMA%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637076121121194497.ZjcxZWNmN2MtMjBjOC00MTU5LWJlYmUtNzZiMDIwZmFmMWY0ZGRhMjMwNWQtYjk4MS00MTZkLTg2YWEtZWNlNWM0Nzk4Nzg0%26state%3DCfDJ8NL7t4oBOP5MutlmZOUr9kmb2ozn5Ni79pVngfI1hxTQ5ckvvGBu_NqhCDzNoHhUdPbzl4reUTD__N9g-UgS4qa4bHium9LtkTYbez-nVR1XR5U8fwz3bLKw7AKIsZ2RJppZUJJhxiK3Qkw2uRRkipR4DHa1n2NzSKkul56qMEbZBYEY0wBsosXk1cwgK9RtqcRkOabOkz6LbSFLiLwtpyqHAVJDxKkDSGt39o-CoWOqupycqNhxlzzFn53qWBF6ge86NHoKV8dQ3yX6ET7o7mbnokO0Qz_5QoxffGWgGF_ZwK9G1rv752X0GjhB3dOdsLkIr8PVvw8PVasUDjBPnWPH4jgwGPtjixiGXcp14irSgLUeL9Y8XCeaE_kFpuF8xw%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0 application/x-www-form-urlencoded 252
+2019-10-25 16:55:31.357 +02:00 [INF] No CORS policy found for the specified request.
+2019-10-25 16:55:31.358 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:31.358 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:31.367 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:31.368 +02:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.AccountController.Login (StsServerIdentity)'
+2019-10-25 16:55:31.381 +02:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(StsServerIdentity.Models.LoginInputModel) on controller StsServerIdentity.Controllers.AccountController (StsServerIdentity).
+2019-10-25 16:55:31.447 +02:00 [INF] Executing action method StsServerIdentity.Controllers.AccountController.Login (StsServerIdentity) - Validation state: "Valid"
+2019-10-25 16:55:31.876 +02:00 [INF] Entity Framework Core 3.0.0 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 16:55:32.283 +02:00 [INF] Executing DbCommand [Parameters=[@__normalizedUserName_0='?' (Size = 22)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."IsAdmin", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE (("a"."NormalizedUserName" = @__normalizedUserName_0) AND ("a"."NormalizedUserName" IS NOT NULL AND @__normalizedUserName_0 IS NOT NULL)) OR ("a"."NormalizedUserName" IS NULL AND @__normalizedUserName_0 IS NULL)
+LIMIT 1
+2019-10-25 16:55:32.420 +02:00 [INF] Executing DbCommand [Parameters=[@__user_Id_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."ClaimType", "a"."ClaimValue", "a"."UserId"
+FROM "AspNetUserClaims" AS "a"
+WHERE ("a"."UserId" = @__user_Id_0) AND @__user_Id_0 IS NOT NULL
+2019-10-25 16:55:32.453 +02:00 [INF] Executing DbCommand [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a0"."Name"
+FROM "AspNetUserRoles" AS "a"
+INNER JOIN "AspNetRoles" AS "a0" ON "a"."RoleId" = "a0"."Id"
+WHERE ("a"."UserId" = @__userId_0) AND @__userId_0 IS NOT NULL
+2019-10-25 16:55:32.461 +02:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 16:55:32.466 +02:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-10-25 16:55:32.466 +02:00 [INF] User logged in.
+2019-10-25 16:55:32.467 +02:00 [INF] Executed action method StsServerIdentity.Controllers.AccountController.Login (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 1019.6092000000001ms.
+2019-10-25 16:55:32.467 +02:00 [INF] Executing RedirectResult, redirecting to /connect/authorize/callback?client_id=codeflowpkceclient&redirect_uri=https%3A%2F%2Flocalhost%3A44360%2Fsignin-oidc&response_type=code&scope=openid%20profile%20offline_access&code_challenge=-Dv_oz4EsMmgMLUmreQMs4eoDKErqpl2hH3T4_NROMA&code_challenge_method=S256&response_mode=form_post&nonce=637076121121194497.ZjcxZWNmN2MtMjBjOC00MTU5LWJlYmUtNzZiMDIwZmFmMWY0ZGRhMjMwNWQtYjk4MS00MTZkLTg2YWEtZWNlNWM0Nzk4Nzg0&state=CfDJ8NL7t4oBOP5MutlmZOUr9kmb2ozn5Ni79pVngfI1hxTQ5ckvvGBu_NqhCDzNoHhUdPbzl4reUTD__N9g-UgS4qa4bHium9LtkTYbez-nVR1XR5U8fwz3bLKw7AKIsZ2RJppZUJJhxiK3Qkw2uRRkipR4DHa1n2NzSKkul56qMEbZBYEY0wBsosXk1cwgK9RtqcRkOabOkz6LbSFLiLwtpyqHAVJDxKkDSGt39o-CoWOqupycqNhxlzzFn53qWBF6ge86NHoKV8dQ3yX6ET7o7mbnokO0Qz_5QoxffGWgGF_ZwK9G1rv752X0GjhB3dOdsLkIr8PVvw8PVasUDjBPnWPH4jgwGPtjixiGXcp14irSgLUeL9Y8XCeaE_kFpuF8xw&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.5.0.0.
+2019-10-25 16:55:32.468 +02:00 [INF] Executed action StsServerIdentity.Controllers.AccountController.Login (StsServerIdentity) in 1086.5703ms
+2019-10-25 16:55:32.468 +02:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.AccountController.Login (StsServerIdentity)'
+2019-10-25 16:55:32.468 +02:00 [INF] HTTP POST /Account/Login?returnurl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dcodeflowpkceclient%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A44360%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520offline_access%26code_challenge%3D-Dv_oz4EsMmgMLUmreQMs4eoDKErqpl2hH3T4_NROMA%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637076121121194497.ZjcxZWNmN2MtMjBjOC00MTU5LWJlYmUtNzZiMDIwZmFmMWY0ZGRhMjMwNWQtYjk4MS00MTZkLTg2YWEtZWNlNWM0Nzk4Nzg0%26state%3DCfDJ8NL7t4oBOP5MutlmZOUr9kmb2ozn5Ni79pVngfI1hxTQ5ckvvGBu_NqhCDzNoHhUdPbzl4reUTD__N9g-UgS4qa4bHium9LtkTYbez-nVR1XR5U8fwz3bLKw7AKIsZ2RJppZUJJhxiK3Qkw2uRRkipR4DHa1n2NzSKkul56qMEbZBYEY0wBsosXk1cwgK9RtqcRkOabOkz6LbSFLiLwtpyqHAVJDxKkDSGt39o-CoWOqupycqNhxlzzFn53qWBF6ge86NHoKV8dQ3yX6ET7o7mbnokO0Qz_5QoxffGWgGF_ZwK9G1rv752X0GjhB3dOdsLkIr8PVvw8PVasUDjBPnWPH4jgwGPtjixiGXcp14irSgLUeL9Y8XCeaE_kFpuF8xw%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0 responded 302 in 1109.5855 ms
+2019-10-25 16:55:32.471 +02:00 [INF] Request finished in 1126.8517000000002ms 302 
+2019-10-25 16:55:32.477 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/connect/authorize/callback?client_id=codeflowpkceclient&redirect_uri=https%3A%2F%2Flocalhost%3A44360%2Fsignin-oidc&response_type=code&scope=openid%20profile%20offline_access&code_challenge=-Dv_oz4EsMmgMLUmreQMs4eoDKErqpl2hH3T4_NROMA&code_challenge_method=S256&response_mode=form_post&nonce=637076121121194497.ZjcxZWNmN2MtMjBjOC00MTU5LWJlYmUtNzZiMDIwZmFmMWY0ZGRhMjMwNWQtYjk4MS00MTZkLTg2YWEtZWNlNWM0Nzk4Nzg0&state=CfDJ8NL7t4oBOP5MutlmZOUr9kmb2ozn5Ni79pVngfI1hxTQ5ckvvGBu_NqhCDzNoHhUdPbzl4reUTD__N9g-UgS4qa4bHium9LtkTYbez-nVR1XR5U8fwz3bLKw7AKIsZ2RJppZUJJhxiK3Qkw2uRRkipR4DHa1n2NzSKkul56qMEbZBYEY0wBsosXk1cwgK9RtqcRkOabOkz6LbSFLiLwtpyqHAVJDxKkDSGt39o-CoWOqupycqNhxlzzFn53qWBF6ge86NHoKV8dQ3yX6ET7o7mbnokO0Qz_5QoxffGWgGF_ZwK9G1rv752X0GjhB3dOdsLkIr8PVvw8PVasUDjBPnWPH4jgwGPtjixiGXcp14irSgLUeL9Y8XCeaE_kFpuF8xw&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.5.0.0  
+2019-10-25 16:55:32.482 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-10-25 16:55:32.521 +02:00 [INF] Entity Framework Core 3.0.0 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 16:55:32.531 +02:00 [INF] Executing DbCommand [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."IsAdmin", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE ("a"."Id" = @__p_0) AND @__p_0 IS NOT NULL
+LIMIT 1
+2019-10-25 16:55:32.536 +02:00 [INF] Showing consent: User has not yet consented
+2019-10-25 16:55:32.537 +02:00 [INF] Request finished in 60.938100000000006ms 302 
+2019-10-25 16:55:32.542 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/consent?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dcodeflowpkceclient%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A44360%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520offline_access%26code_challenge%3D-Dv_oz4EsMmgMLUmreQMs4eoDKErqpl2hH3T4_NROMA%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637076121121194497.ZjcxZWNmN2MtMjBjOC00MTU5LWJlYmUtNzZiMDIwZmFmMWY0ZGRhMjMwNWQtYjk4MS00MTZkLTg2YWEtZWNlNWM0Nzk4Nzg0%26state%3DCfDJ8NL7t4oBOP5MutlmZOUr9kmb2ozn5Ni79pVngfI1hxTQ5ckvvGBu_NqhCDzNoHhUdPbzl4reUTD__N9g-UgS4qa4bHium9LtkTYbez-nVR1XR5U8fwz3bLKw7AKIsZ2RJppZUJJhxiK3Qkw2uRRkipR4DHa1n2NzSKkul56qMEbZBYEY0wBsosXk1cwgK9RtqcRkOabOkz6LbSFLiLwtpyqHAVJDxKkDSGt39o-CoWOqupycqNhxlzzFn53qWBF6ge86NHoKV8dQ3yX6ET7o7mbnokO0Qz_5QoxffGWgGF_ZwK9G1rv752X0GjhB3dOdsLkIr8PVvw8PVasUDjBPnWPH4jgwGPtjixiGXcp14irSgLUeL9Y8XCeaE_kFpuF8xw%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0  
+2019-10-25 16:55:32.543 +02:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity)'
+2019-10-25 16:55:32.546 +02:00 [INF] Route matched with {action = "Index", controller = "Consent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(System.String) on controller StsServerIdentity.Controllers.ConsentController (StsServerIdentity).
+2019-10-25 16:55:32.573 +02:00 [INF] Executing action method StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity) - Validation state: "Valid"
+2019-10-25 16:55:32.578 +02:00 [INF] Executed action method StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 5.4915ms.
+2019-10-25 16:55:32.579 +02:00 [INF] Executing ViewResult, running view Index.
+2019-10-25 16:55:32.604 +02:00 [INF] Executed ViewResult - view Index executed in 25.2635ms.
+2019-10-25 16:55:32.604 +02:00 [INF] Executed action StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity) in 57.403400000000005ms
+2019-10-25 16:55:32.604 +02:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity)'
+2019-10-25 16:55:32.604 +02:00 [INF] HTTP GET /consent?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dcodeflowpkceclient%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A44360%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520offline_access%26code_challenge%3D-Dv_oz4EsMmgMLUmreQMs4eoDKErqpl2hH3T4_NROMA%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637076121121194497.ZjcxZWNmN2MtMjBjOC00MTU5LWJlYmUtNzZiMDIwZmFmMWY0ZGRhMjMwNWQtYjk4MS00MTZkLTg2YWEtZWNlNWM0Nzk4Nzg0%26state%3DCfDJ8NL7t4oBOP5MutlmZOUr9kmb2ozn5Ni79pVngfI1hxTQ5ckvvGBu_NqhCDzNoHhUdPbzl4reUTD__N9g-UgS4qa4bHium9LtkTYbez-nVR1XR5U8fwz3bLKw7AKIsZ2RJppZUJJhxiK3Qkw2uRRkipR4DHa1n2NzSKkul56qMEbZBYEY0wBsosXk1cwgK9RtqcRkOabOkz6LbSFLiLwtpyqHAVJDxKkDSGt39o-CoWOqupycqNhxlzzFn53qWBF6ge86NHoKV8dQ3yX6ET7o7mbnokO0Qz_5QoxffGWgGF_ZwK9G1rv752X0GjhB3dOdsLkIr8PVvw8PVasUDjBPnWPH4jgwGPtjixiGXcp14irSgLUeL9Y8XCeaE_kFpuF8xw%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0 responded 200 in 61.0864 ms
+2019-10-25 16:55:32.604 +02:00 [INF] Request finished in 62.446200000000005ms 200 text/html; charset=utf-8
+2019-10-25 16:55:32.632 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/css/vendor.min.css?v=Ys2tdmcpFt9_JIC5cHGffY2F4u0Qd-RaZ-yE2vb3ODE  
+2019-10-25 16:55:32.634 +02:00 [INF] The file /css/vendor.min.css was not modified
+2019-10-25 16:55:32.634 +02:00 [INF] Request finished in 1.8961000000000001ms 304 text/css
+2019-10-25 16:55:32.637 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/css/site.min.css?v=9n42HB2zuqXKDsr8sMaXB5eFvO87SuAf1CjiV4cv1Fg  
+2019-10-25 16:55:32.637 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/js/vendor.min.js?v=fU2o7grwU_-VlGi02urdutdOf4zItrve6iWt8pM8rys  
+2019-10-25 16:55:32.638 +02:00 [INF] The file /css/site.min.css was not modified
+2019-10-25 16:55:32.638 +02:00 [INF] The file /js/vendor.min.js was not modified
+2019-10-25 16:55:32.638 +02:00 [INF] Request finished in 1.3648ms 304 text/css
+2019-10-25 16:55:32.638 +02:00 [INF] Request finished in 1.3272000000000002ms 304 application/javascript
+2019-10-25 16:55:32.639 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2019-10-25 16:55:32.640 +02:00 [INF] The file /js/site.min.js was not modified
+2019-10-25 16:55:32.640 +02:00 [INF] Request finished in 1.0816000000000001ms 304 application/javascript
+2019-10-25 16:55:32.694 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/css/fontawesome-free-5.4.1-web/webfonts/fa-solid-900.woff2  
+2019-10-25 16:55:32.696 +02:00 [INF] The file /css/fontawesome-free-5.4.1-web/webfonts/fa-solid-900.woff2 was not modified
+2019-10-25 16:55:32.697 +02:00 [INF] Request finished in 2.8386ms 304 font/woff2
+2019-10-25 16:55:34.203 +02:00 [INF] Request starting HTTP/2.0 POST https://localhost:44318/Consent application/x-www-form-urlencoded 1287
+2019-10-25 16:55:34.220 +02:00 [INF] No CORS policy found for the specified request.
+2019-10-25 16:55:34.243 +02:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity)'
+2019-10-25 16:55:34.288 +02:00 [INF] Route matched with {action = "Index", controller = "Consent"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(StsServerIdentity.Models.ConsentInputModel) on controller StsServerIdentity.Controllers.ConsentController (StsServerIdentity).
+2019-10-25 16:55:34.333 +02:00 [INF] Executing action method StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity) - Validation state: "Valid"
+2019-10-25 16:55:34.349 +02:00 [INF] Executed action method StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.RedirectResult in 15.9962ms.
+2019-10-25 16:55:34.350 +02:00 [INF] Executing RedirectResult, redirecting to /connect/authorize/callback?client_id=codeflowpkceclient&redirect_uri=https%3A%2F%2Flocalhost%3A44360%2Fsignin-oidc&response_type=code&scope=openid%20profile%20offline_access&code_challenge=-Dv_oz4EsMmgMLUmreQMs4eoDKErqpl2hH3T4_NROMA&code_challenge_method=S256&response_mode=form_post&nonce=637076121121194497.ZjcxZWNmN2MtMjBjOC00MTU5LWJlYmUtNzZiMDIwZmFmMWY0ZGRhMjMwNWQtYjk4MS00MTZkLTg2YWEtZWNlNWM0Nzk4Nzg0&state=CfDJ8NL7t4oBOP5MutlmZOUr9kmb2ozn5Ni79pVngfI1hxTQ5ckvvGBu_NqhCDzNoHhUdPbzl4reUTD__N9g-UgS4qa4bHium9LtkTYbez-nVR1XR5U8fwz3bLKw7AKIsZ2RJppZUJJhxiK3Qkw2uRRkipR4DHa1n2NzSKkul56qMEbZBYEY0wBsosXk1cwgK9RtqcRkOabOkz6LbSFLiLwtpyqHAVJDxKkDSGt39o-CoWOqupycqNhxlzzFn53qWBF6ge86NHoKV8dQ3yX6ET7o7mbnokO0Qz_5QoxffGWgGF_ZwK9G1rv752X0GjhB3dOdsLkIr8PVvw8PVasUDjBPnWPH4jgwGPtjixiGXcp14irSgLUeL9Y8XCeaE_kFpuF8xw&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.5.0.0.
+2019-10-25 16:55:34.350 +02:00 [INF] Executed action StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity) in 60.6574ms
+2019-10-25 16:55:34.350 +02:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.ConsentController.Index (StsServerIdentity)'
+2019-10-25 16:55:34.350 +02:00 [INF] HTTP POST /Consent responded 302 in 109.8271 ms
+2019-10-25 16:55:34.351 +02:00 [INF] Request finished in 152.8073ms 302 
+2019-10-25 16:55:34.357 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/connect/authorize/callback?client_id=codeflowpkceclient&redirect_uri=https%3A%2F%2Flocalhost%3A44360%2Fsignin-oidc&response_type=code&scope=openid%20profile%20offline_access&code_challenge=-Dv_oz4EsMmgMLUmreQMs4eoDKErqpl2hH3T4_NROMA&code_challenge_method=S256&response_mode=form_post&nonce=637076121121194497.ZjcxZWNmN2MtMjBjOC00MTU5LWJlYmUtNzZiMDIwZmFmMWY0ZGRhMjMwNWQtYjk4MS00MTZkLTg2YWEtZWNlNWM0Nzk4Nzg0&state=CfDJ8NL7t4oBOP5MutlmZOUr9kmb2ozn5Ni79pVngfI1hxTQ5ckvvGBu_NqhCDzNoHhUdPbzl4reUTD__N9g-UgS4qa4bHium9LtkTYbez-nVR1XR5U8fwz3bLKw7AKIsZ2RJppZUJJhxiK3Qkw2uRRkipR4DHa1n2NzSKkul56qMEbZBYEY0wBsosXk1cwgK9RtqcRkOabOkz6LbSFLiLwtpyqHAVJDxKkDSGt39o-CoWOqupycqNhxlzzFn53qWBF6ge86NHoKV8dQ3yX6ET7o7mbnokO0Qz_5QoxffGWgGF_ZwK9G1rv752X0GjhB3dOdsLkIr8PVvw8PVasUDjBPnWPH4jgwGPtjixiGXcp14irSgLUeL9Y8XCeaE_kFpuF8xw&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.5.0.0  
+2019-10-25 16:55:34.358 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2019-10-25 16:55:34.415 +02:00 [INF] Entity Framework Core 3.0.0 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 16:55:34.419 +02:00 [INF] Executing DbCommand [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."IsAdmin", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE ("a"."Id" = @__p_0) AND @__p_0 IS NOT NULL
+LIMIT 1
+2019-10-25 16:55:34.426 +02:00 [INF] User consented to scopes: ["openid","profile","offline_access"]
+2019-10-25 16:55:34.477 +02:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2019-10-25 16:55:34.481 +02:00 [INF] Request finished in 124.53120000000001ms 200 text/html; charset=UTF-8
+2019-10-25 16:55:34.585 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:44318/connect/token application/x-www-form-urlencoded 266
+2019-10-25 16:55:34.588 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2019-10-25 16:55:34.650 +02:00 [INF] Entity Framework Core 3.0.0 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-10-25 16:55:34.652 +02:00 [INF] Executing DbCommand [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."IsAdmin", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE ("a"."Id" = @__p_0) AND @__p_0 IS NOT NULL
+LIMIT 1
+2019-10-25 16:55:34.668 +02:00 [INF] Token request validation success, {"ClientId":"codeflowpkceclient","ClientName":"codeflowpkceclient","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"dK9uly5xH_400cOz1TJBIvjk2WLE554ia0EcmrTiHQY","RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"client_id":"codeflowpkceclient","client_secret":"***REDACTED***","code":"dK9uly5xH_400cOz1TJBIvjk2WLE554ia0EcmrTiHQY","grant_type":"authorization_code","redirect_uri":"https://localhost:44360/signin-oidc","code_verifier":"H3lXbQ28SAj3OqVkOFBk1URDxQORfQZu6-CLgo8IwO4"},"$type":"TokenRequestValidationLog"}
+2019-10-25 16:55:34.696 +02:00 [INF] Executing DbCommand [Parameters=[@__user_Id_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."ClaimType", "a"."ClaimValue", "a"."UserId"
+FROM "AspNetUserClaims" AS "a"
+WHERE ("a"."UserId" = @__user_Id_0) AND @__user_Id_0 IS NOT NULL
+2019-10-25 16:55:34.698 +02:00 [INF] Executing DbCommand [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a0"."Name"
+FROM "AspNetUserRoles" AS "a"
+INNER JOIN "AspNetRoles" AS "a0" ON "a"."RoleId" = "a0"."Id"
+WHERE ("a"."UserId" = @__userId_0) AND @__userId_0 IS NOT NULL
+2019-10-25 16:55:34.809 +02:00 [INF] Executing DbCommand [Parameters=[@__user_Id_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."ClaimType", "a"."ClaimValue", "a"."UserId"
+FROM "AspNetUserClaims" AS "a"
+WHERE ("a"."UserId" = @__user_Id_0) AND @__user_Id_0 IS NOT NULL
+2019-10-25 16:55:34.812 +02:00 [INF] Executing DbCommand [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a0"."Name"
+FROM "AspNetUserRoles" AS "a"
+INNER JOIN "AspNetRoles" AS "a0" ON "a"."RoleId" = "a0"."Id"
+WHERE ("a"."UserId" = @__userId_0) AND @__userId_0 IS NOT NULL
+2019-10-25 16:55:34.824 +02:00 [INF] Request finished in 238.6365ms 200 application/json; charset=UTF-8
+2019-10-25 16:55:35.115 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44318/.well-known/openid-configuration  
+2019-10-25 16:55:35.117 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-10-25 16:55:35.119 +02:00 [INF] Request finished in 4.3882ms 200 application/json; charset=UTF-8
+2019-10-25 16:55:35.138 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44318/.well-known/openid-configuration/jwks  
+2019-10-25 16:55:35.139 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-10-25 16:55:35.139 +02:00 [INF] Request finished in 1.3825ms 200 application/jwk-set+json; charset=UTF-8
+2019-10-25 16:55:35.152 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:44318/connect/token application/x-www-form-urlencoded 109
+2019-10-25 16:55:35.153 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2019-10-25 16:55:35.160 +02:00 [INF] Token request validation success, {"ClientId":"CC","ClientName":"CC","GrantType":"client_credentials","Scopes":"scope_used_for_api_in_protected_zone","AuthorizationCode":null,"RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"client_credentials","scope":"scope_used_for_api_in_protected_zone","client_id":"CC","client_secret":"***REDACTED***"},"$type":"TokenRequestValidationLog"}
+2019-10-25 16:55:35.163 +02:00 [INF] Request finished in 10.9305ms 200 application/json; charset=UTF-8
+2019-10-25 17:04:57.488 +02:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 17:04:58.013 +02:00 [INF] Starting IdentityServer4 version 3.0.1.0
+2019-10-25 17:04:58.030 +02:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2019-10-25 17:04:58.046 +02:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2019-10-25 17:04:58.744 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2019-10-25 17:04:58.744 +02:00 [INF] Hosting environment: Development
+2019-10-25 17:04:58.744 +02:00 [INF] Content root path: C:\git\ApiJwtWithTwoSts\Sts
+2019-10-25 17:04:58.972 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/  
+2019-10-25 17:04:59.901 +02:00 [INF] Executing endpoint 'StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity)'
+2019-10-25 17:04:59.962 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44318/.well-known/openid-configuration  
+2019-10-25 17:05:00.009 +02:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller StsServerIdentity.Controllers.HomeController (StsServerIdentity).
+2019-10-25 17:05:00.016 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-10-25 17:05:00.337 +02:00 [INF] Executing action method StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity) - Validation state: "Valid"
+2019-10-25 17:05:00.372 +02:00 [INF] Executed action method StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity), returned result Microsoft.AspNetCore.Mvc.ViewResult in 1.3713ms.
+2019-10-25 17:05:00.469 +02:00 [INF] Executing ViewResult, running view Index.
+2019-10-25 17:05:00.677 +02:00 [INF] Request finished in 713.2528ms 200 application/json; charset=UTF-8
+2019-10-25 17:05:00.797 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44318/.well-known/openid-configuration/jwks  
+2019-10-25 17:05:00.802 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-10-25 17:05:00.897 +02:00 [INF] Executed ViewResult - view Index executed in 441.2198ms.
+2019-10-25 17:05:00.899 +02:00 [INF] Executed action StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity) in 888.6270000000001ms
+2019-10-25 17:05:00.899 +02:00 [INF] Executed endpoint 'StsServerIdentity.Controllers.HomeController.Index (StsServerIdentity)'
+2019-10-25 17:05:00.901 +02:00 [INF] HTTP GET / responded 200 in 1087.1301 ms
+2019-10-25 17:05:00.904 +02:00 [INF] Request finished in 1938.0216ms 200 text/html; charset=utf-8
+2019-10-25 17:05:00.936 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/css/vendor.min.css?v=Ys2tdmcpFt9_JIC5cHGffY2F4u0Qd-RaZ-yE2vb3ODE  
+2019-10-25 17:05:00.937 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/css/site.min.css?v=9n42HB2zuqXKDsr8sMaXB5eFvO87SuAf1CjiV4cv1Fg  
+2019-10-25 17:05:00.937 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/css/fontawesome-free-5.4.1-web/css/all.min.css?v=TTtNXZn5LcwfHBadsA92qh3GXV2CGSr8_wTPigGKe6E  
+2019-10-25 17:05:00.967 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/js/vendor.min.js?v=fU2o7grwU_-VlGi02urdutdOf4zItrve6iWt8pM8rys  
+2019-10-25 17:05:00.967 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44318/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2019-10-25 17:05:00.974 +02:00 [INF] The file /js/vendor.min.js was not modified
+2019-10-25 17:05:00.974 +02:00 [INF] The file /css/vendor.min.css was not modified
+2019-10-25 17:05:00.974 +02:00 [INF] The file /css/fontawesome-free-5.4.1-web/css/all.min.css was not modified
+2019-10-25 17:05:00.974 +02:00 [INF] The file /js/site.min.js was not modified
+2019-10-25 17:05:00.979 +02:00 [INF] The file /css/site.min.css was not modified
+2019-10-25 17:05:00.982 +02:00 [INF] Request finished in 46.8943ms 304 text/css
+2019-10-25 17:05:00.983 +02:00 [INF] Request finished in 35.5568ms 304 application/javascript
+2019-10-25 17:05:00.982 +02:00 [INF] Request finished in 15.652700000000001ms 304 application/javascript
+2019-10-25 17:05:00.983 +02:00 [INF] Request finished in 45.5002ms 304 text/css
+2019-10-25 17:05:00.984 +02:00 [INF] Request finished in 46.8476ms 304 text/css
+2019-10-25 17:05:00.990 +02:00 [INF] Request finished in 192.3751ms 200 application/jwk-set+json; charset=UTF-8
+2019-10-25 17:05:01.334 +02:00 [INF] Request starting HTTP/1.1 POST https://localhost:44318/connect/token application/x-www-form-urlencoded 109
+2019-10-25 17:05:01.341 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2019-10-25 17:05:01.464 +02:00 [INF] Token request validation success, {"ClientId":"CC","ClientName":"CC","GrantType":"client_credentials","Scopes":"scope_used_for_api_in_protected_zone","AuthorizationCode":null,"RefreshToken":null,"UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"client_credentials","scope":"scope_used_for_api_in_protected_zone","client_id":"CC","client_secret":"***REDACTED***"},"$type":"TokenRequestValidationLog"}
+2019-10-25 17:05:01.613 +02:00 [INF] Request finished in 279.6669ms 200 application/json; charset=UTF-8
+2019-10-25 17:05:04.522 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44318/.well-known/openid-configuration  
+2019-10-25 17:05:04.526 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2019-10-25 17:05:04.528 +02:00 [INF] Request finished in 6.2321ms 200 application/json; charset=UTF-8
+2019-10-25 17:05:04.713 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:44318/.well-known/openid-configuration/jwks  
+2019-10-25 17:05:04.715 +02:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2019-10-25 17:05:04.715 +02:00 [INF] Request finished in 2.4242ms 200 application/jwk-set+json; charset=UTF-8

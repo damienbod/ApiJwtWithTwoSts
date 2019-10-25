@@ -1,0 +1,164 @@
+2019-10-25 16:40:06.498 +02:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 16:40:07.088 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2019-10-25 16:40:07.089 +02:00 [INF] Hosting environment: Development
+2019-10-25 16:40:07.089 +02:00 [INF] Content root path: C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2
+2019-10-25 16:40:07.181 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44368/  
+2019-10-25 16:40:07.481 +02:00 [INF] Authorization was successful.
+2019-10-25 16:40:07.482 +02:00 [INF] Executing endpoint '/Index'
+2019-10-25 16:40:07.606 +02:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2019-10-25 16:40:07.630 +02:00 [INF] Executing handler method RazorPageOidcClient.Pages.IndexModel.OnGetAsync - ModelState is "Valid"
+2019-10-25 16:40:09.975 +02:00 [INF] Start processing HTTP request GET "https://localhost:44367/.well-known/openid-configuration"
+2019-10-25 16:40:09.976 +02:00 [INF] Sending HTTP request GET "https://localhost:44367/.well-known/openid-configuration"
+2019-10-25 16:40:10.545 +02:00 [INF] Received HTTP response after 564.9787ms - "OK"
+2019-10-25 16:40:10.547 +02:00 [INF] End processing HTTP request after 575.6303ms - "OK"
+2019-10-25 16:40:10.582 +02:00 [INF] Start processing HTTP request GET "https://localhost:44367/.well-known/openid-configuration/jwks"
+2019-10-25 16:40:10.582 +02:00 [INF] Sending HTTP request GET "https://localhost:44367/.well-known/openid-configuration/jwks"
+2019-10-25 16:40:10.706 +02:00 [INF] Received HTTP response after 124.2442ms - "OK"
+2019-10-25 16:40:10.706 +02:00 [INF] End processing HTTP request after 124.7005ms - "OK"
+2019-10-25 16:40:10.854 +02:00 [INF] Start processing HTTP request POST "https://localhost:44367/connect/token"
+2019-10-25 16:40:10.854 +02:00 [INF] Sending HTTP request POST "https://localhost:44367/connect/token"
+2019-10-25 16:40:11.040 +02:00 [INF] Received HTTP response after 185.84210000000002ms - "OK"
+2019-10-25 16:40:11.040 +02:00 [INF] End processing HTTP request after 186.60330000000002ms - "OK"
+2019-10-25 16:40:12.936 +02:00 [INF] Start processing HTTP request GET "https://localhost:44342/api/values"
+2019-10-25 16:40:12.936 +02:00 [INF] Sending HTTP request GET "https://localhost:44342/api/values"
+2019-10-25 16:40:15.219 +02:00 [INF] Received HTTP response after 2282.4582ms - "Unauthorized"
+2019-10-25 16:40:15.220 +02:00 [INF] End processing HTTP request after 2283.8419ms - "Unauthorized"
+2019-10-25 16:40:19.924 +02:00 [INF] Executed page /Index in 12312.381000000001ms
+2019-10-25 16:40:19.925 +02:00 [INF] Executed endpoint '/Index'
+2019-10-25 16:40:19.927 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ApplicationException: Exception System.ApplicationException: Status code: Unauthorized, Error: Unauthorized
+   at RazorPageOidcClient.ApiService.GetApiDataAsync() in C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2\ApiClient\ApiService.cs:line 75
+   at RazorPageOidcClient.ApiService.GetApiDataAsync() in C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2\ApiClient\ApiService.cs:line 79
+   at RazorPageOidcClient.Pages.IndexModel.OnGetAsync() in C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2\Pages\Index.cshtml.cs:line 28
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.ExecutorFactory.NonGenericTaskHandlerMethod.Execute(Object receiver, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeHandlerMethodAsync()
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeNextPageFilterAsync()
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Rethrow(PageHandlerExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-10-25 16:40:19.982 +02:00 [INF] Request finished in 12806.599100000001ms 500 text/html; charset=utf-8
+2019-10-25 16:51:34.577 +02:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 16:51:34.953 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2019-10-25 16:51:34.953 +02:00 [INF] Hosting environment: Development
+2019-10-25 16:51:34.953 +02:00 [INF] Content root path: C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2
+2019-10-25 16:51:35.016 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44368/  
+2019-10-25 16:51:35.202 +02:00 [INF] Authorization was successful.
+2019-10-25 16:51:35.202 +02:00 [INF] Executing endpoint '/Index'
+2019-10-25 16:51:35.278 +02:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2019-10-25 16:51:35.295 +02:00 [INF] Executing handler method RazorPageOidcClient.Pages.IndexModel.OnGetAsync - ModelState is "Valid"
+2019-10-25 16:52:31.635 +02:00 [INF] Start processing HTTP request GET "https://localhost:44367/.well-known/openid-configuration"
+2019-10-25 16:52:31.636 +02:00 [INF] Sending HTTP request GET "https://localhost:44367/.well-known/openid-configuration"
+2019-10-25 16:52:32.189 +02:00 [INF] Received HTTP response after 549.2582ms - "OK"
+2019-10-25 16:52:32.190 +02:00 [INF] End processing HTTP request after 557.5519ms - "OK"
+2019-10-25 16:52:32.220 +02:00 [INF] Start processing HTTP request GET "https://localhost:44367/.well-known/openid-configuration/jwks"
+2019-10-25 16:52:32.220 +02:00 [INF] Sending HTTP request GET "https://localhost:44367/.well-known/openid-configuration/jwks"
+2019-10-25 16:52:32.851 +02:00 [INF] Received HTTP response after 629.3611000000001ms - "OK"
+2019-10-25 16:52:32.857 +02:00 [INF] End processing HTTP request after 636.8087ms - "OK"
+2019-10-25 16:52:33.042 +02:00 [INF] Start processing HTTP request POST "https://localhost:44367/connect/token"
+2019-10-25 16:52:33.042 +02:00 [INF] Sending HTTP request POST "https://localhost:44367/connect/token"
+2019-10-25 16:52:34.067 +02:00 [INF] Received HTTP response after 1024.5446ms - "OK"
+2019-10-25 16:52:34.069 +02:00 [INF] End processing HTTP request after 1026.6177ms - "OK"
+2019-10-25 16:52:37.444 +02:00 [INF] Start processing HTTP request GET "https://localhost:44342/api/values"
+2019-10-25 16:52:37.444 +02:00 [INF] Sending HTTP request GET "https://localhost:44342/api/values"
+2019-10-25 16:52:42.034 +02:00 [INF] Received HTTP response after 4590.0625ms - "OK"
+2019-10-25 16:52:42.035 +02:00 [INF] End processing HTTP request after 4591.335ms - "OK"
+2019-10-25 16:52:43.455 +02:00 [INF] Executed handler method OnGetAsync, returned result .
+2019-10-25 16:52:43.460 +02:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2019-10-25 16:52:43.460 +02:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2019-10-25 16:52:43.582 +02:00 [INF] Executed page /Index in 68299.0409ms
+2019-10-25 16:52:43.584 +02:00 [INF] Executed endpoint '/Index'
+2019-10-25 16:52:43.588 +02:00 [INF] Request finished in 68581.2365ms 200 text/html; charset=utf-8
+2019-10-25 16:52:43.611 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44368/js/site.js?v=dLGP40S79Xnx6GqUthRF6NWvjvhQ1nOvdVSwaNcgG18  
+2019-10-25 16:52:43.611 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44368/css/site.css  
+2019-10-25 16:52:43.611 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44368/lib/bootstrap/dist/css/bootstrap.min.css  
+2019-10-25 16:52:43.611 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44368/lib/bootstrap/dist/js/bootstrap.bundle.min.js  
+2019-10-25 16:52:43.619 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44368/lib/jquery/dist/jquery.min.js  
+2019-10-25 16:52:43.629 +02:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2\wwwroot\js\site.js'
+2019-10-25 16:52:43.630 +02:00 [INF] Request finished in 19.8135ms 200 application/javascript
+2019-10-25 16:52:43.639 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2\wwwroot\css\site.css'
+2019-10-25 16:52:43.639 +02:00 [INF] Request finished in 30.308ms 200 text/css
+2019-10-25 16:52:43.646 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2019-10-25 16:52:43.647 +02:00 [INF] Request finished in 37.5601ms 200 text/css
+2019-10-25 16:52:43.683 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2019-10-25 16:52:43.683 +02:00 [INF] Request finished in 74.0436ms 200 application/javascript
+2019-10-25 16:52:43.702 +02:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2\wwwroot\lib\jquery\dist\jquery.min.js'
+2019-10-25 16:52:43.702 +02:00 [INF] Request finished in 93.4179ms 200 application/javascript
+2019-10-25 16:55:03.254 +02:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 16:55:04.204 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2019-10-25 16:55:04.240 +02:00 [INF] Hosting environment: Development
+2019-10-25 16:55:04.240 +02:00 [INF] Content root path: C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2
+2019-10-25 16:55:04.370 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44368/  
+2019-10-25 16:55:04.851 +02:00 [INF] Authorization was successful.
+2019-10-25 16:55:04.852 +02:00 [INF] Executing endpoint '/Index'
+2019-10-25 16:55:05.097 +02:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2019-10-25 16:55:05.139 +02:00 [INF] Executing handler method RazorPageOidcClient.Pages.IndexModel.OnGetAsync - ModelState is "Valid"
+2019-10-25 16:55:12.091 +02:00 [INF] Start processing HTTP request GET "https://localhost:44367/.well-known/openid-configuration"
+2019-10-25 16:55:12.092 +02:00 [INF] Sending HTTP request GET "https://localhost:44367/.well-known/openid-configuration"
+2019-10-25 16:55:12.604 +02:00 [INF] Received HTTP response after 507.5224ms - "OK"
+2019-10-25 16:55:12.606 +02:00 [INF] End processing HTTP request after 518.3567ms - "OK"
+2019-10-25 16:55:12.646 +02:00 [INF] Start processing HTTP request GET "https://localhost:44367/.well-known/openid-configuration/jwks"
+2019-10-25 16:55:12.646 +02:00 [INF] Sending HTTP request GET "https://localhost:44367/.well-known/openid-configuration/jwks"
+2019-10-25 16:55:12.748 +02:00 [INF] Received HTTP response after 101.5327ms - "OK"
+2019-10-25 16:55:12.748 +02:00 [INF] End processing HTTP request after 102.1717ms - "OK"
+2019-10-25 16:55:12.880 +02:00 [INF] Start processing HTTP request POST "https://localhost:44367/connect/token"
+2019-10-25 16:55:12.880 +02:00 [INF] Sending HTTP request POST "https://localhost:44367/connect/token"
+2019-10-25 16:55:13.083 +02:00 [INF] Received HTTP response after 202.7288ms - "OK"
+2019-10-25 16:55:13.084 +02:00 [INF] End processing HTTP request after 204.2552ms - "OK"
+2019-10-25 16:55:18.285 +02:00 [INF] Start processing HTTP request GET "https://localhost:44342/api/values"
+2019-10-25 16:55:18.286 +02:00 [INF] Sending HTTP request GET "https://localhost:44342/api/values"
+2019-10-25 16:55:23.080 +02:00 [INF] Received HTTP response after 4794.1141ms - "OK"
+2019-10-25 16:55:23.081 +02:00 [INF] End processing HTTP request after 4795.412200000001ms - "OK"
+2019-10-25 16:55:23.106 +02:00 [INF] Executed handler method OnGetAsync, returned result .
+2019-10-25 16:55:23.111 +02:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2019-10-25 16:55:23.111 +02:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2019-10-25 16:55:23.229 +02:00 [INF] Executed page /Index in 18127.0757ms
+2019-10-25 16:55:23.230 +02:00 [INF] Executed endpoint '/Index'
+2019-10-25 16:55:23.235 +02:00 [INF] Request finished in 18879.1159ms 200 text/html; charset=utf-8
+2019-10-25 17:05:00.177 +02:00 [INF] User profile is available. Using 'C:\Users\stduser\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-10-25 17:05:00.673 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2019-10-25 17:05:00.681 +02:00 [INF] Hosting environment: Development
+2019-10-25 17:05:00.691 +02:00 [INF] Content root path: C:\git\ApiJwtWithTwoSts\RazorPageOidcClientT2
+2019-10-25 17:05:00.786 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44368/  
+2019-10-25 17:05:01.158 +02:00 [INF] Cookies was not authenticated. Failure message: Unprotect ticket failed
+2019-10-25 17:05:01.172 +02:00 [INF] Authorization failed.
+2019-10-25 17:05:02.372 +02:00 [INF] AuthenticationScheme: OpenIdConnect was challenged.
+2019-10-25 17:05:02.408 +02:00 [INF] Request finished in 1630.0557000000001ms 302 
+2019-10-25 17:05:18.341 +02:00 [INF] Request starting HTTP/2.0 POST https://localhost:44368/signin-oidc application/x-www-form-urlencoded 562
+2019-10-25 17:05:18.890 +02:00 [INF] AuthenticationScheme: Cookies signed in.
+2019-10-25 17:05:18.893 +02:00 [INF] Request finished in 551.635ms 302 
+2019-10-25 17:05:18.896 +02:00 [INF] Request starting HTTP/2.0 GET https://localhost:44368/  
+2019-10-25 17:05:18.900 +02:00 [INF] Authorization was successful.
+2019-10-25 17:05:18.900 +02:00 [INF] Executing endpoint '/Index'
+2019-10-25 17:05:18.925 +02:00 [INF] Route matched with {page = "/Index"}. Executing page /Index
+2019-10-25 17:05:18.938 +02:00 [INF] Executing handler method RazorPageOidcClient.Pages.IndexModel.OnGetAsync - ModelState is "Valid"
+2019-10-25 17:05:18.958 +02:00 [INF] Start processing HTTP request GET "https://localhost:44367/.well-known/openid-configuration"
+2019-10-25 17:05:18.959 +02:00 [INF] Sending HTTP request GET "https://localhost:44367/.well-known/openid-configuration"
+2019-10-25 17:05:18.993 +02:00 [INF] Received HTTP response after 30.2057ms - "OK"
+2019-10-25 17:05:18.994 +02:00 [INF] End processing HTTP request after 39.0548ms - "OK"
+2019-10-25 17:05:19.011 +02:00 [INF] Start processing HTTP request GET "https://localhost:44367/.well-known/openid-configuration/jwks"
+2019-10-25 17:05:19.011 +02:00 [INF] Sending HTTP request GET "https://localhost:44367/.well-known/openid-configuration/jwks"
+2019-10-25 17:05:19.018 +02:00 [INF] Received HTTP response after 6.135400000000001ms - "OK"
+2019-10-25 17:05:19.018 +02:00 [INF] End processing HTTP request after 6.6593ms - "OK"
+2019-10-25 17:05:19.030 +02:00 [INF] Start processing HTTP request POST "https://localhost:44367/connect/token"
+2019-10-25 17:05:19.030 +02:00 [INF] Sending HTTP request POST "https://localhost:44367/connect/token"
+2019-10-25 17:05:19.046 +02:00 [INF] Received HTTP response after 15.3107ms - "OK"
+2019-10-25 17:05:19.046 +02:00 [INF] End processing HTTP request after 15.724ms - "OK"
+2019-10-25 17:05:19.070 +02:00 [INF] Start processing HTTP request GET "https://localhost:44342/api/values"
+2019-10-25 17:05:19.070 +02:00 [INF] Sending HTTP request GET "https://localhost:44342/api/values"
+2019-10-25 17:05:20.707 +02:00 [INF] Received HTTP response after 1636.8959ms - "OK"
+2019-10-25 17:05:20.707 +02:00 [INF] End processing HTTP request after 1637.2812000000001ms - "OK"
+2019-10-25 17:05:20.712 +02:00 [INF] Executed handler method OnGetAsync, returned result .
+2019-10-25 17:05:20.716 +02:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2019-10-25 17:05:20.717 +02:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2019-10-25 17:05:20.823 +02:00 [INF] Executed page /Index in 1891.623ms
+2019-10-25 17:05:20.824 +02:00 [INF] Executed endpoint '/Index'
+2019-10-25 17:05:20.827 +02:00 [INF] Request finished in 1930.5438000000001ms 200 text/html; charset=utf-8
