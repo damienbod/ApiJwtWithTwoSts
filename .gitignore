@@ -3,3 +3,8 @@
 **/node_modules
 **/v16/
 **/.vs
+/RazorPageOidcClient.txt
+/RazorPageOidcClientT2.txt
+/StsLogs.txt
+/StsLogsT2.txt
+/WebApi.txt
