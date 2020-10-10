@@ -6,6 +6,13 @@ namespace StsServerIdentity
 {
     public class Config
     {
+        public static IEnumerable<ApiScope> GetApiScopes()
+        {
+            return new List<ApiScope>
+            {
+                new ApiScope("scope_used_for_api_in_protected_zone",  "Scope for the scope_used_for_api_in_protected_zone")
+            };
+        }
         public static IEnumerable<IdentityResource> GetIdentityResources()
         {
             return new List<IdentityResource>
@@ -27,14 +34,7 @@ namespace StsServerIdentity
                     {
                         new Secret("api_resource_in_protected_zone_secret".Sha256())
                     },
-                    Scopes =
-                    {
-                        new Scope
-                        {
-                            Name = "scope_used_for_api_in_protected_zone",
-                            ShowInDiscoveryDocument = false
-                        }
-                    },
+                    Scopes = { "scope_used_for_api_in_protected_zone"},
                     UserClaims = { "role", "admin", "user" }
                 }
             };
