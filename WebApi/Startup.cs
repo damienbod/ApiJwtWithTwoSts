@@ -76,7 +76,7 @@ namespace WebApi
                 {
                     policy.RequireClaim("scope", "scope_used_for_api_in_protected_zone");
                 });
-              });
+            });
 
             //services.AddAuthorization(options =>
             //    options.AddPolicy("protectedScope", policy =>

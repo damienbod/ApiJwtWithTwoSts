@@ -57,7 +57,7 @@ namespace RazorPageOidcClient
             _logger.LogDebug($"GetApiToken new from STS for {api_name}");
 
             // add
-            var newAccessToken = await getApiToken( api_name,  api_scope,  secret);
+            var newAccessToken = await getApiToken(api_name, api_scope, secret);
             AddToCache(api_name, newAccessToken);
 
             return newAccessToken.AccessToken;
@@ -68,7 +68,7 @@ namespace RazorPageOidcClient
             try
             {
                 var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(
-                    _httpClient, 
+                    _httpClient,
                     _authConfigurations.Value.StsServer);
 
                 if (disco.IsError)
@@ -96,7 +96,7 @@ namespace RazorPageOidcClient
                     ExpiresIn = DateTime.UtcNow.AddSeconds(tokenResponse.ExpiresIn),
                     AccessToken = tokenResponse.AccessToken
                 };
-                
+
             }
             catch (Exception e)
             {

@@ -14,7 +14,7 @@ namespace RazorPageOidcClient
         private readonly ApiTokenCacheClient _apiTokenClient;
 
         public ApiService(
-            IOptions<AuthConfigurations> authConfigurations, 
+            IOptions<AuthConfigurations> authConfigurations,
             IHttpClientFactory clientFactory,
             ApiTokenCacheClient apiTokenClient)
         {
