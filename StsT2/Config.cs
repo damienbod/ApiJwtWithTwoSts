@@ -28,7 +28,7 @@ namespace StsServerIdentity
         {
             return new List<ApiResource>
             {
-                new ApiResource("ProtectedApiResource")
+                new ApiResource("ProtectedApiResourceB")
                 {
                     DisplayName = "API protected",
                     ApiSecrets =
@@ -47,8 +47,8 @@ namespace StsServerIdentity
             {
                 new Client
                 {
-                    ClientId = "CC",
-                    ClientName = "CC",
+                    ClientId = "CC_STS_B",
+                    ClientName = "CC_STS_B",
                     ClientSecrets = new List<Secret> { new Secret { Value = "cc_secret".Sha256() } },
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     AllowedScopes = new List<string> { "scope_used_for_api_in_protected_zone", "scope_b" }

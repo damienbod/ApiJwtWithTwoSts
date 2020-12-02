@@ -56,8 +56,8 @@ namespace RazorPageOidcClient
                 client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
 
                 var access_token = await _apiTokenClient.GetApiToken(
-                    "CC",
-                    "scope_used_for_api_in_protected_zone",
+                    "CC_STS_B",
+                    "scope_b",
                     "cc_secret"
                 );
 
