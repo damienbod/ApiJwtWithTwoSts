@@ -7,7 +7,7 @@ namespace WebApi.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        [Authorize(AuthenticationSchemes = "SchemeStsA,SchemeStsB", Policy= "MyPolicy")]
+        [Authorize(AuthenticationSchemes = "SchemeStsA,SchemeStsB", Policy = "MyPolicy")]
         [HttpGet]
         public IEnumerable<string> Get()
         {
