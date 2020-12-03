@@ -10,7 +10,8 @@ namespace StsServerIdentity
         {
             return new List<ApiScope>
             {
-                new ApiScope("scope_used_for_api_in_protected_zone",  "Scope for the scope_used_for_api_in_protected_zone")
+                new ApiScope("scope_used_for_api_in_protected_zone",  "Scope for the scope_used_for_api_in_protected_zone"),
+                new ApiScope("scope_a",  "Scope for a")
             };
         }
 
@@ -28,14 +29,14 @@ namespace StsServerIdentity
         {
             return new List<ApiResource>
             {
-                new ApiResource("ProtectedApiResource")
+                new ApiResource("ProtectedApiResourceA")
                 {
                     DisplayName = "API protected",
                     ApiSecrets =
                     {
                         new Secret("api_resource_in_protected_zone_secret".Sha256())
                     },
-                    Scopes = { "scope_used_for_api_in_protected_zone" },
+                    Scopes = { "scope_used_for_api_in_protected_zone", "scope_a" },
                     UserClaims = { "role", "admin", "user" }
                 }
             };
@@ -47,11 +48,11 @@ namespace StsServerIdentity
             {
                 new Client
                 {
-                    ClientId = "CC",
-                    ClientName = "CC",
+                    ClientId = "CC_STS_A",
+                    ClientName = "CC_STS_A",
                     ClientSecrets = new List<Secret> { new Secret { Value = "cc_secret".Sha256() } },
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes = new List<string> { "scope_used_for_api_in_protected_zone" }
+                    AllowedScopes = new List<string> { "scope_used_for_api_in_protected_zone", "scope_a" }
                 },
                 new Client
                 {

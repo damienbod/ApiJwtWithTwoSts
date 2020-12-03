@@ -13,6 +13,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.IO;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace WebApi
 {
@@ -38,15 +40,17 @@ namespace WebApi
         {
             var x509Certificate2 = GetCertificate(_environment);
 
+            services.AddSingleton<IAuthorizationHandler, MyApiHandler>();
+
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-                .AddJwtBearer("JWT", options =>
+                .AddJwtBearer("SchemeStsA", options =>
                 {
-                    options.Audience = "ProtectedApiResource";
+                    options.Audience = "ProtectedApiResourceA";
                     options.Authority = "https://localhost:44318";
                 })
-                .AddJwtBearer("Custom", options =>
+                .AddJwtBearer("SchemeStsB", options =>
                 {
-                    options.Audience = "ProtectedApiResource";
+                    options.Audience = "ProtectedApiResourceB";
                     options.Authority = "https://localhost:44367";
                 });
 
@@ -69,14 +73,14 @@ namespace WebApi
             {
                 options.DefaultPolicy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
-                    .AddAuthenticationSchemes("JWT", "Custom")
+                    .AddAuthenticationSchemes("SchemeStsA", "SchemeStsB")
                     .Build();
 
-                options.AddPolicy("protectedScope", policy =>
+                options.AddPolicy("MyPolicy", policy =>
                 {
-                    policy.RequireClaim("scope", "scope_used_for_api_in_protected_zone");
+                    policy.AddRequirements(new MyApiRequirement());
                 });
-              });
+            });
 
             //services.AddAuthorization(options =>
             //    options.AddPolicy("protectedScope", policy =>
@@ -86,6 +90,43 @@ namespace WebApi
             //);
 
             services.AddControllers();
+
+            services.AddSwaggerGen(c =>
+            {
+                // add JWT Authentication
+                var securityScheme = new OpenApiSecurityScheme
+                {
+                    Name = "JWT Authentication",
+                    Description = "Enter JWT Bearer token **_only_**",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer", // must be lower case
+                    BearerFormat = "JWT",
+                    Reference = new OpenApiReference
+                    {
+                        Id = JwtBearerDefaults.AuthenticationScheme,
+                        Type = ReferenceType.SecurityScheme
+                    }
+                };
+                c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {securityScheme, new string[] { }}
+                });
+
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "An API ",
+                    Version = "v1",
+                    Description = "An API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "damienbod",
+                        Email = string.Empty,
+                        Url = new Uri("https://damienbod.com/"),
+                    },
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -102,6 +143,13 @@ namespace WebApi
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Service API One");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseStaticFiles();
             app.UseRouting();

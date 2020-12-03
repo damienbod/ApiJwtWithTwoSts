@@ -14,7 +14,7 @@ namespace RazorPageOidcClient
         private readonly ApiTokenCacheClient _apiTokenClient;
 
         public ApiService(
-            IOptions<AuthConfigurations> authConfigurations, 
+            IOptions<AuthConfigurations> authConfigurations,
             IHttpClientFactory clientFactory,
             ApiTokenCacheClient apiTokenClient)
         {
@@ -56,8 +56,8 @@ namespace RazorPageOidcClient
                 client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
 
                 var access_token = await _apiTokenClient.GetApiToken(
-                    "CC",
-                    "scope_used_for_api_in_protected_zone",
+                    "CC_STS_A",
+                    "scope_a",
                     "cc_secret"
                 );
 
