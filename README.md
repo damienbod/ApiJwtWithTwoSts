@@ -1,5 +1,7 @@
 # Web API authorization in ASP.NET Core
 
+[![.NET](https://github.com/damienbod/ApiJwtWithTwoSts/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/ApiJwtWithTwoSts/actions/workflows/dotnet.yml)
+
 ## Blogs
 
 [Securing an ASP.NET Core API which uses multiple access tokens](https://damienbod.com/2020/12/03/securing-an-asp-net-core-api-which-uses-multiple-access-tokens/)
