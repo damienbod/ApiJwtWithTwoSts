@@ -1,12 +1,10 @@
 # Web API authorization in ASP.NET Core
 
-## Securing an ASP.NET Core API which uses multiple access tokens
+## Blogs
 
-https://damienbod.com/2020/12/03/securing-an-asp-net-core-api-which-uses-multiple-access-tokens/
+[Securing an ASP.NET Core API which uses multiple access tokens](https://damienbod.com/2020/12/03/securing-an-asp-net-core-api-which-uses-multiple-access-tokens/)
 
-## Securing a Web API using multiple token servers
-
-https://damienbod.com/2019/10/25/securing-a-web-api-using-multiple-token-servers/
+[Securing a Web API using multiple token servers](https://damienbod.com/2019/10/25/securing-a-web-api-using-multiple-token-servers/)
 
 ## History
 
