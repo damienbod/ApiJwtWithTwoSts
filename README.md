@@ -10,6 +10,8 @@ https://damienbod.com/2019/10/25/securing-a-web-api-using-multiple-token-servers
 
 ## History
 
+2021-08-29 Updated nuget packages
+
 2021-01-21 Updated nuget packages, npm packages
 
 2020-12-03 Update to .NET 5, added ASP.NET Core policies
