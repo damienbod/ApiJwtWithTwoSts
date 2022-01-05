@@ -10,6 +10,8 @@
 
 ## History
 
+2022-01-05 Updated nuget packages
+
 2021-08-29 Updated nuget packages
 
 2021-01-21 Updated nuget packages, npm packages
