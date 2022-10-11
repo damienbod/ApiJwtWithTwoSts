@@ -1,11 +1,6 @@
 ﻿using IdentityModel.Client;
 using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace RazorPageOidcClient
 {
@@ -111,16 +106,16 @@ namespace RazorPageOidcClient
 
             lock (_lock)
             {
-                _cache.SetString(key, JsonConvert.SerializeObject(accessTokenItem), options);
+                _cache.SetString(key, System.Text.Json.JsonSerializer.Serialize(accessTokenItem), options);
             }
         }
 
-        private AccessTokenItem GetFromCache(string key)
+        private AccessTokenItem? GetFromCache(string key)
         {
             var item = _cache.GetString(key);
             if (item != null)
             {
-                return JsonConvert.DeserializeObject<AccessTokenItem>(item);
+                return System.Text.Json.JsonSerializer.Deserialize<AccessTokenItem>(item);
             }
 
             return null;

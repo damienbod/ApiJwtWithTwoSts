@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
+using WebHybridClient;
 
 namespace RazorPageOidcClient
 {
@@ -79,8 +80,10 @@ namespace RazorPageOidcClient
             else
             {
                 app.UseExceptionHandler("/Error");
-                app.UseHsts();
             }
+
+            app.UseSecurityHeaders(
+                SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment()));
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
