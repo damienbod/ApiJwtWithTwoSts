@@ -1,6 +1,8 @@
+using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
+using System;
 
 namespace RazorPageOidcClient;
 
@@ -34,14 +36,18 @@ public class Program
 
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>()
-                .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
+            .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
                 .ReadFrom.Configuration(hostingContext.Configuration)
                 .Enrich.FromLogContext()
-                .WriteTo.File("../RazorPageOidcClientT2.txt")
+                .WriteTo.File("../_logs-RazorPageOidcClient2.txt")
                 .WriteTo.Console(theme: AnsiConsoleTheme.Code)
-            );
+            )
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
             });
 }
+
+
+
+
