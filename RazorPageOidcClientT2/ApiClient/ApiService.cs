@@ -1,9 +1,6 @@
 ﻿using IdentityModel.Client;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace RazorPageOidcClient
 {
@@ -23,7 +20,7 @@ namespace RazorPageOidcClient
             _apiTokenClient = apiTokenClient;
         }
 
-        public async Task<JArray> GetUnsecureApiDataAsync()
+        public async Task<List<string>?> GetUnsecureApiDataAsync()
         {
             try
             {
@@ -33,8 +30,9 @@ namespace RazorPageOidcClient
                 var response = await client.GetAsync("api/values");
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var data = JArray.Parse(responseContent);
+                    //var responseContent = await response.Content.ReadAsStringAsync();
+                    var data = await JsonSerializer.DeserializeAsync<List<string>>(
+                        response.Content.ReadAsStream());
 
                     return data;
                 }
@@ -47,7 +45,7 @@ namespace RazorPageOidcClient
             }
 
         }
-        public async Task<JArray> GetApiDataAsync()
+        public async Task<List<string>?> GetApiDataAsync()
         {
             try
             {
@@ -66,8 +64,9 @@ namespace RazorPageOidcClient
                 var response = await client.GetAsync("api/values");
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var data = JArray.Parse(responseContent);
+                    //var responseContent = await response.Content.ReadAsStringAsync();
+                    var data = await JsonSerializer.DeserializeAsync<List<string>>(
+                        response.Content.ReadAsStream());
 
                     return data;
                 }
