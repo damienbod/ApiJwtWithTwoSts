@@ -33,14 +33,14 @@ public class ApiTokenInMemoryClient
         if (_accessTokens.ContainsKey(api_name))
         {
             var accessToken = _accessTokens.GetValueOrDefault(api_name);
-            if (accessToken.ExpiresIn > DateTime.UtcNow)
+            if (accessToken!.ExpiresIn > DateTime.UtcNow)
             {
                 return accessToken.AccessToken;
             }
             else
             {
                 // remove
-                _accessTokens.TryRemove(api_name, out AccessTokenItem accessTokenItem);
+                _accessTokens.TryRemove(api_name, out AccessTokenItem? accessTokenItem);
             }
         }
 
