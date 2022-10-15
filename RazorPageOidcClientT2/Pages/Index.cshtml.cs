@@ -1,34 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
-namespace RazorPageOidcClient.Pages
+namespace RazorPageOidcClient.Pages;
+
+[Authorize]
+public class IndexModel : PageModel
 {
-    [Authorize]
-    public class IndexModel : PageModel
+    private readonly ApiService _apiService;
+
+    public List<string> Data { get; set; } = new List<string>();
+    public IndexModel(ApiService apiService)
     {
-        private readonly ILogger<IndexModel> _logger;
-        private readonly ApiService _apiService;
+        _apiService = apiService;
+    }
 
-        public string Data = "none";
-        public IndexModel(ILogger<IndexModel> logger, ApiService apiService)
-        {
-            _apiService = apiService;
-            _logger = logger;
-        }
+    public async Task OnGetAsync()
+    {
+        //var result = await _apiService.GetUnsecureApiDataAsync();
+        var resultSecure = await _apiService.GetApiDataAsync();
+        if(resultSecure != null)
+            Data = resultSecure;
 
-        public async Task OnGetAsync()
-        {
-            //var result = await _apiService.GetUnsecureApiDataAsync();
-            var resultSecure = await _apiService.GetApiDataAsync();
-
-            Data = resultSecure.ToString();
-            Console.WriteLine(resultSecure);
-        }
+        Console.WriteLine(resultSecure!.FirstOrDefault());
     }
 }
