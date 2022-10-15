@@ -40,6 +40,12 @@ namespace StsServerIdentity
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
+                    .ReadFrom.Configuration(hostingContext.Configuration)
+                    .Enrich.FromLogContext()
+                    .WriteTo.File("../_logs-STS-T2.txt")
+                    .WriteTo.Console(theme: AnsiConsoleTheme.Code)
+                )
                 .ConfigureAppConfiguration((context, config) =>
                 {
                     var builder = config.Build();
@@ -58,16 +64,6 @@ namespace StsServerIdentity
                             .AddEnvironmentVariables();
                         //.AddUserSecrets("your user secret....");
                     }
-                })
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>()
-                        .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
-                        .ReadFrom.Configuration(hostingContext.Configuration)
-                        .Enrich.FromLogContext()
-                        .WriteTo.File("../StsLogsT2.txt")
-                        .WriteTo.Console(theme: AnsiConsoleTheme.Code)
-                );
                 });
     }
 }
