@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace WebApi
+namespace WebApi;
+
+public class MyApiRequirement : IAuthorizationRequirement
 {
-    public class MyApiRequirement : IAuthorizationRequirement
-    {
-    }
 }
