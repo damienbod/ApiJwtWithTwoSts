@@ -150,7 +150,6 @@ public class Startup
         if (_environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
-            app.UseDatabaseErrorPage();
         }
         else
         {
