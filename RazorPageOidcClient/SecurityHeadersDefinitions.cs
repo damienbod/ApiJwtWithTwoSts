@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace WebHybridClient;
+namespace RazorPageOidcClient;
 
 public static class SecurityHeadersDefinitions
 {

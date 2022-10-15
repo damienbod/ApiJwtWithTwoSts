@@ -1,8 +1,7 @@
-﻿namespace RazorPageOidcClient
+﻿namespace RazorPageOidcClient;
+
+public class AuthConfigurations
 {
-    public class AuthConfigurations
-    {
-        public string StsServer { get; set; }
-        public string ProtectedApiUrl { get; set; }
-    }
+    public string StsServer { get; set; } = string.Empty;
+    public string ProtectedApiUrl { get; set; } = string.Empty;
 }
