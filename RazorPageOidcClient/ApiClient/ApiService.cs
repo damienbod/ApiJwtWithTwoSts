@@ -1,83 +1,81 @@
 ﻿using IdentityModel.Client;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+using System.Text.Json;
 
-namespace RazorPageOidcClient
+namespace RazorPageOidcClient;
+
+public class ApiService
 {
-    public class ApiService
+    private readonly IOptions<AuthConfigurations> _authConfigurations;
+    private readonly IHttpClientFactory _clientFactory;
+    private readonly ApiTokenCacheClient _apiTokenClient;
+
+    public ApiService(
+        IOptions<AuthConfigurations> authConfigurations,
+        IHttpClientFactory clientFactory,
+        ApiTokenCacheClient apiTokenClient)
     {
-        private readonly IOptions<AuthConfigurations> _authConfigurations;
-        private readonly IHttpClientFactory _clientFactory;
-        private readonly ApiTokenCacheClient _apiTokenClient;
+        _authConfigurations = authConfigurations;
+        _clientFactory = clientFactory;
+        _apiTokenClient = apiTokenClient;
+    }
 
-        public ApiService(
-            IOptions<AuthConfigurations> authConfigurations,
-            IHttpClientFactory clientFactory,
-            ApiTokenCacheClient apiTokenClient)
+    public async Task<List<string>?> GetUnsecureApiDataAsync()
+    {
+        try
         {
-            _authConfigurations = authConfigurations;
-            _clientFactory = clientFactory;
-            _apiTokenClient = apiTokenClient;
+            var client = _clientFactory.CreateClient();
+
+            client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
+            var response = await client.GetAsync("api/values");
+            if (response.IsSuccessStatusCode)
+            {
+                //var responseContent = await response.Content.ReadAsStringAsync();
+                var data = await JsonSerializer.DeserializeAsync<List<string>>(
+                    response.Content.ReadAsStream());
+
+                return data;
+            }
+
+            throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException($"Exception {e}");
         }
 
-        public async Task<JArray> GetUnsecureApiDataAsync()
+    }
+    public async Task<List<string>?> GetApiDataAsync()
+    {
+        try
         {
-            try
+            var client = _clientFactory.CreateClient();
+
+            client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
+
+            var access_token = await _apiTokenClient.GetApiToken(
+                "CC_STS_A",
+                "scope_a",
+                "cc_secret"
+            );
+
+            client.SetBearerToken(access_token);
+
+            var response = await client.GetAsync("api/values");
+            if (response.IsSuccessStatusCode)
             {
-                var client = _clientFactory.CreateClient();
+                //var responseContent = await response.Content.ReadAsStringAsync();
+                var data = await JsonSerializer.DeserializeAsync<List<string>>(
+                    response.Content.ReadAsStream());
 
-                client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
-                var response = await client.GetAsync("api/values");
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var data = JArray.Parse(responseContent);
-
-                    return data;
-                }
-
-                throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
-            }
-            catch (Exception e)
-            {
-                throw new ApplicationException($"Exception {e}");
+                return data;
             }
 
+            throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
         }
-        public async Task<JArray> GetApiDataAsync()
+        catch (Exception e)
         {
-            try
-            {
-                var client = _clientFactory.CreateClient();
-
-                client.BaseAddress = new Uri(_authConfigurations.Value.ProtectedApiUrl);
-
-                var access_token = await _apiTokenClient.GetApiToken(
-                    "CC_STS_A",
-                    "scope_a",
-                    "cc_secret"
-                );
-
-                client.SetBearerToken(access_token);
-
-                var response = await client.GetAsync("api/values");
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var data = JArray.Parse(responseContent);
-
-                    return data;
-                }
-
-                throw new ApplicationException($"Status code: {response.StatusCode}, Error: {response.ReasonPhrase}");
-            }
-            catch (Exception e)
-            {
-                throw new ApplicationException($"Exception {e}");
-            }
+            throw new ApplicationException($"Exception {e}");
         }
     }
 }
