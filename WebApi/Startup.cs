@@ -4,6 +4,8 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
 
 namespace WebApi;
 
@@ -22,20 +24,6 @@ public class Startup
 
         services.AddSingleton<IAuthorizationHandler, MyApiHandler>();
 
-        //.AddJwtBearer(Consts.MY_AUTH0_SCHEME, options =>
-        // {
-        //     options.Authority = Consts.MY_AUTH0_ISS;
-        //     options.Audience = "https://auth0-api1";
-        //     options.TokenValidationParameters = new TokenValidationParameters
-        //     {
-        //         ValidateIssuer = true,
-        //         ValidateAudience = true,
-        //         ValidateIssuerSigningKey = true,
-        //         ValidAudiences = Configuration.GetSection("ValidAudiences").Get<string[]>(),
-        //         ValidIssuers = Configuration.GetSection("ValidIssuers").Get<string[]>()
-        //     };
-        // })
-
         services.AddAuthentication(options =>
         {
             options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -45,11 +33,28 @@ public class Startup
         {
             options.Audience = "rs_scope_aApi";
             options.Authority = "https://localhost:44318";
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true,
+                ValidAudiences = new List<string> { "rs_scope_aApi" },
+                ValidIssuers = new List<string> { "https://localhost:44318"},
+            };
+
         })
         .AddJwtBearer("SchemeStsB", options =>
         {
             options.Audience = "rs_scope_bApi";
             options.Authority = "https://localhost:44367";
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true,
+                ValidAudiences = new List<string> { "rs_scope_bApi" },
+                ValidIssuers = new List<string> { "https://localhost:44367" },
+            };
         });
 
         //.AddJwtBearer(options =>
