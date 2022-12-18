@@ -52,13 +52,13 @@ public class ApiTokenCacheClient
         _logger.LogDebug("GetApiToken new from STS for {api_name}", api_name);
 
         // add
-        var newAccessToken = await getApiToken(api_name, api_scope, secret);
+        var newAccessToken = await GetApiTokenInternal(api_name, api_scope, secret);
         AddToCache(api_name, newAccessToken);
 
         return newAccessToken.AccessToken;
     }
 
-    private async Task<AccessTokenItem> getApiToken(string api_name, string api_scope, string secret)
+    private async Task<AccessTokenItem> GetApiTokenInternal(string api_name, string api_scope, string secret)
     {
         try
         {
