@@ -56,5 +56,4 @@ public class MyApiHandler : AuthorizationHandler<MyApiRequirement>
 
         return false;
     }
-
 }

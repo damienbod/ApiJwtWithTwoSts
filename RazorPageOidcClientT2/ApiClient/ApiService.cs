@@ -45,6 +45,7 @@ public class ApiService
         }
 
     }
+
     public async Task<List<string>?> GetApiDataAsync()
     {
         try
