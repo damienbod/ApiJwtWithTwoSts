@@ -49,7 +49,7 @@ public class Program
             .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
                 .ReadFrom.Configuration(hostingContext.Configuration)
                 .Enrich.FromLogContext()
-                .WriteTo.File("../_logs-IdentityProvider.txt")
+                .WriteTo.File("../_logs-IdentityProviderT2.txt")
                 .WriteTo.Console(theme: AnsiConsoleTheme.Code)
             )
             .ConfigureWebHostDefaults(webBuilder =>

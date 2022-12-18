@@ -1,5 +1,4 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
-using IdentityServer4.AccessTokenValidation;
 using Microsoft.IdentityModel.Logging;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authorization;
@@ -23,17 +22,35 @@ public class Startup
 
         services.AddSingleton<IAuthorizationHandler, MyApiHandler>();
 
-        services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-            .AddJwtBearer("SchemeStsA", options =>
-            {
-                options.Audience = "rs_scope_aApi";
-                options.Authority = "https://localhost:44318";
-            })
-            .AddJwtBearer("SchemeStsB", options =>
-            {
-                options.Audience = "rs_scope_bApi";
-                options.Authority = "https://localhost:44367";
-            });
+        //.AddJwtBearer(Consts.MY_AUTH0_SCHEME, options =>
+        // {
+        //     options.Authority = Consts.MY_AUTH0_ISS;
+        //     options.Audience = "https://auth0-api1";
+        //     options.TokenValidationParameters = new TokenValidationParameters
+        //     {
+        //         ValidateIssuer = true,
+        //         ValidateAudience = true,
+        //         ValidateIssuerSigningKey = true,
+        //         ValidAudiences = Configuration.GetSection("ValidAudiences").Get<string[]>(),
+        //         ValidIssuers = Configuration.GetSection("ValidIssuers").Get<string[]>()
+        //     };
+        // })
+
+        services.AddAuthentication(options =>
+        {
+            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer("SchemeStsA", options =>
+        {
+            options.Audience = "rs_scope_aApi";
+            options.Authority = "https://localhost:44318";
+        })
+        .AddJwtBearer("SchemeStsB", options =>
+        {
+            options.Audience = "rs_scope_bApi";
+            options.Authority = "https://localhost:44367";
+        });
 
         //.AddJwtBearer(options =>
         //{
