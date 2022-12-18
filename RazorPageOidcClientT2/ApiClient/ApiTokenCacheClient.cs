@@ -11,7 +11,7 @@ public class ApiTokenCacheClient
     private readonly IOptions<AuthConfigurations> _authConfigurations;
 
     private static readonly Object _lock = new();
-    private IDistributedCache _cache;
+    private readonly IDistributedCache _cache;
 
     private const int cacheExpirationInDays = 1;
 
@@ -49,7 +49,7 @@ public class ApiTokenCacheClient
             }
         }
 
-        _logger.LogDebug($"GetApiToken new from STS for {api_name}");
+        _logger.LogDebug("GetApiToken new from STS for {api_name}", api_name);
 
         // add
         var newAccessToken = await getApiToken(api_name, api_scope, secret);
@@ -68,7 +68,7 @@ public class ApiTokenCacheClient
 
             if (disco.IsError)
             {
-                _logger.LogError($"disco error Status code: {disco.IsError}, Error: {disco.Error}");
+                _logger.LogError("disco error Status code: {discoIsError}, Error: {discoError}", disco.IsError, disco.Error);
                 throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
             }
 
@@ -82,7 +82,7 @@ public class ApiTokenCacheClient
 
             if (tokenResponse.IsError)
             {
-                _logger.LogError($"tokenResponse.IsError Status code: {tokenResponse.IsError}, Error: {tokenResponse.Error}");
+                _logger.LogError("tokenResponse.IsError Status code: {tokenResponseIsError}, Error: {tokenResponseError}", tokenResponse.IsError, tokenResponse.Error);
                 throw new ApplicationException($"Status code: {tokenResponse.IsError}, Error: {tokenResponse.Error}");
             }
 
@@ -95,7 +95,7 @@ public class ApiTokenCacheClient
         }
         catch (Exception e)
         {
-            _logger.LogError($"Exception {e}");
+            _logger.LogError("Exception {e}", e);
             throw new ApplicationException($"Exception {e}");
         }
     }

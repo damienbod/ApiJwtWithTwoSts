@@ -37,7 +37,7 @@ public class MyApiHandler : AuthorizationHandler<MyApiRequirement>
 
         return false;
     }
-    private bool StsAScopeAValid(Claim? scope)
+    private static bool StsAScopeAValid(Claim? scope)
     {
         if (scope != null && scope.Value == "scope_a")
         {
@@ -47,7 +47,7 @@ public class MyApiHandler : AuthorizationHandler<MyApiRequirement>
         return false;
     }
 
-    private bool StsBScopeBValid(Claim? scope)
+    private static bool StsBScopeBValid(Claim? scope)
     {
         if (scope != null && scope.Value == "scope_b")
         {
