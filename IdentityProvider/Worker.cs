@@ -27,7 +27,7 @@ public class Worker : IHostedService
             var manager = provider.GetRequiredService<IOpenIddictApplicationManager>();
 
             // API application CC
-            if (await manager.FindByClientIdAsync("CC") == null)
+            if (await manager.FindByClientIdAsync("CC_STS_A") == null)
             {
                 await manager.CreateAsync(new OpenIddictApplicationDescriptor
                 {
@@ -80,7 +80,8 @@ public class Worker : IHostedService
                         Permissions.Scopes.Email,
                         Permissions.Scopes.Profile,
                         Permissions.Scopes.Roles,
-                        Permissions.Prefixes.Scope + "scope_used_for_api_in_protected_zone"
+                        Permissions.Prefixes.Scope + "scope_used_for_api_in_protected_zone",
+                        Permissions.Prefixes.Scope + "scope_a"
                     },
                     Requirements =
                     {

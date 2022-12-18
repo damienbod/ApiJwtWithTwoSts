@@ -26,12 +26,12 @@ public class Startup
         services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
             .AddJwtBearer("SchemeStsA", options =>
             {
-                options.Audience = "ProtectedApiResourceA";
+                options.Audience = "rs_scope_aApi";
                 options.Authority = "https://localhost:44318";
             })
             .AddJwtBearer("SchemeStsB", options =>
             {
-                options.Audience = "ProtectedApiResourceB";
+                options.Audience = "rs_scope_bApi";
                 options.Authority = "https://localhost:44367";
             });
 
