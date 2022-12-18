@@ -1,10 +1,11 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
-using IdentityServer4.AccessTokenValidation;
 using Microsoft.IdentityModel.Logging;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Configuration;
 
 namespace WebApi;
 
@@ -23,17 +24,38 @@ public class Startup
 
         services.AddSingleton<IAuthorizationHandler, MyApiHandler>();
 
-        services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-            .AddJwtBearer("SchemeStsA", options =>
+        services.AddAuthentication(options =>
+        {
+            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer("SchemeStsA", options =>
+        {
+            options.Audience = "rs_scope_aApi";
+            options.Authority = "https://localhost:44318";
+            options.TokenValidationParameters = new TokenValidationParameters
             {
-                options.Audience = "ProtectedApiResourceA";
-                options.Authority = "https://localhost:44318";
-            })
-            .AddJwtBearer("SchemeStsB", options =>
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true,
+                ValidAudiences = new List<string> { "rs_scope_aApi" },
+                ValidIssuers = new List<string> { "https://localhost:44318"},
+            };
+
+        })
+        .AddJwtBearer("SchemeStsB", options =>
+        {
+            options.Audience = "rs_scope_bApi";
+            options.Authority = "https://localhost:44367";
+            options.TokenValidationParameters = new TokenValidationParameters
             {
-                options.Audience = "ProtectedApiResourceB";
-                options.Authority = "https://localhost:44367";
-            });
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true,
+                ValidAudiences = new List<string> { "rs_scope_bApi" },
+                ValidIssuers = new List<string> { "https://localhost:44367" },
+            };
+        });
 
         //.AddJwtBearer(options =>
         //{
