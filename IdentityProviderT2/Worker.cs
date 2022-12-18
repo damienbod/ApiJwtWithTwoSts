@@ -59,12 +59,12 @@ public class Worker : IHostedService
                     },
                     PostLogoutRedirectUris =
                     {
-                        new Uri("https://localhost:44360/signout-callback-oidc"),
+                        new Uri("https://localhost:44368/signout-callback-oidc"),
                         new Uri("https://localhost:5001/signout-callback-oidc")
                     },
                     RedirectUris =
                     {
-                        new Uri("https://localhost:44360/signin-oidc"),
+                        new Uri("https://localhost:44368/signin-oidc"),
                         new Uri("https://localhost:5001/signin-oidc")
                     },
                     ClientSecret = "codeflow_pkce_client_secret",
