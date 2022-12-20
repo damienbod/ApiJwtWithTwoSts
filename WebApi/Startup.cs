@@ -26,8 +26,7 @@ public class Startup
 
         services.AddAuthentication(options =>
         {
-            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultScheme = "SchemeStsA";
         })
         .AddJwtBearer("SchemeStsA", options =>
         {
