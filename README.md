@@ -29,3 +29,7 @@
 2020-10-10 Updated nuget packages
 
 2020-01-04 Update to .NET Core 3.1
+
+# Links
+
+https://learn.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-7.0
