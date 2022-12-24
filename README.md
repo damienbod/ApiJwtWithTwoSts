@@ -10,6 +10,8 @@
 
 ## History
 
+2022-12-24 Updated OpenIddict
+
 2022-12-20 Updated code so that default scheme has a handler
 
 2022-12-18 Updated nuget packages to .NET 7
