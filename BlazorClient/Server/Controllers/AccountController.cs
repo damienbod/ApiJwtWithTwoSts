@@ -22,11 +22,20 @@ namespace BlazorClient.Server.Controllers
 
         [ValidateAntiForgeryToken]
         [Authorize]
-        [HttpPost("Logout")]
-        public IActionResult Logout() => SignOut(new AuthenticationProperties
+        [HttpPost("LogoutT1")]
+        public IActionResult LogoutT1() => SignOut(new AuthenticationProperties
         {
             RedirectUri = "/"
         },
-        CookieAuthenticationDefaults.AuthenticationScheme, "T1", "T2");
+        CookieAuthenticationDefaults.AuthenticationScheme, "T1");
+
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        [HttpPost("LogoutT2")]
+        public IActionResult LogoutT2() => SignOut(new AuthenticationProperties
+        {
+            RedirectUri = "/"
+        },
+        CookieAuthenticationDefaults.AuthenticationScheme, "T2");
     }
 }

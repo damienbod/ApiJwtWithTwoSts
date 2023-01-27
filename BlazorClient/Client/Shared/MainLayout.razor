@@ -10,9 +10,13 @@
             <AuthorizeView>
                 <Authorized>
                     <strong>Hello, @context?.User?.Identity?.Name!</strong>
-                    <form method="post" action="api/Account/Logout">
+                    <form method="post" action="api/Account/LogoutT1">
                         <AntiForgeryTokenInput/>
-                        <button class="btn btn-link" type="submit">Sign out</button>
+                        <button class="btn btn-link" type="submit">Signout T1</button>
+                    </form>
+                    <form method="post" action="api/Account/LogoutT2">
+                        <AntiForgeryTokenInput/>
+                        <button class="btn btn-link" type="submit">Signout T2</button>
                     </form>
                 </Authorized>
                 <NotAuthorized>
