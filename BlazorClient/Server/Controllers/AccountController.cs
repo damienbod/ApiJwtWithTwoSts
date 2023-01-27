@@ -6,11 +6,19 @@ namespace BlazorClient.Server.Controllers
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
     {
-        [HttpGet("Login")]
-        public ActionResult Login(string returnUrl) => Challenge(new AuthenticationProperties
+        [HttpGet("LoginT1")]
+        public IActionResult T1(string returnUrl)
         {
-            RedirectUri = !string.IsNullOrEmpty(returnUrl) ? returnUrl : "/"
-        });
+            var redirectUrl = !string.IsNullOrEmpty(returnUrl) ? returnUrl : "/";
+            return Challenge(new AuthenticationProperties { RedirectUri = redirectUrl }, "T1");
+        }
+
+        [HttpGet("LoginT2")]
+        public IActionResult T2(string returnUrl)
+        {
+            var redirectUrl = !string.IsNullOrEmpty(returnUrl) ? returnUrl : "/";
+            return Challenge(new AuthenticationProperties { RedirectUri = redirectUrl }, "T2");
+        }
 
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -19,7 +27,6 @@ namespace BlazorClient.Server.Controllers
         {
             RedirectUri = "/"
         },
-        CookieAuthenticationDefaults.AuthenticationScheme,
-        OpenIdConnectDefaults.AuthenticationScheme);
+        CookieAuthenticationDefaults.AuthenticationScheme, "T1", "T2");
     }
 }

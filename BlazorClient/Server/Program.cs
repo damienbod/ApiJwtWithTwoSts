@@ -1,4 +1,7 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Tokens;
+
+IdentityModelEventSource.ShowPII = true;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +13,7 @@ services.AddAntiforgery(options =>
 {
     options.HeaderName = AntiforgeryDefaults.HeaderName;
     options.Cookie.Name = AntiforgeryDefaults.CookieName;
-    options.Cookie.SameSite = SameSiteMode.Strict;
+    options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Strict;
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
 });
 
@@ -20,16 +23,31 @@ services.AddOptions();
 services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = "UNKNOWN";
 })
 .AddCookie()
-.AddOpenIdConnect(options =>
+.AddOpenIdConnect("T1", options =>
 {
     configuration.GetSection("OpenIDConnectSettingsT1").Bind(options);
 
     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.CallbackPath = "/signin-oidc-t1";
     options.ResponseType = OpenIdConnectResponseType.Code;
+    options.SaveTokens = true;
+    options.GetClaimsFromUserInfoEndpoint = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        NameClaimType = "name",
+        RoleClaimType = "role"
+    };
+})
+.AddOpenIdConnect("T2", options =>
+{
+    configuration.GetSection("OpenIDConnectSettingsT2").Bind(options);
 
+    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.ResponseType = OpenIdConnectResponseType.Code;
+    options.CallbackPath = "/signin-oidc-t2";
     options.SaveTokens = true;
     options.GetClaimsFromUserInfoEndpoint = true;
     options.TokenValidationParameters = new TokenValidationParameters
@@ -62,9 +80,10 @@ else
     app.UseExceptionHandler("/Error");
 }
 
-app.UseSecurityHeaders(
-    SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment(),
-        configuration["OpenIDConnectSettings:Authority"]!));
+app.UseSecurityHeaders(SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment(),
+        configuration["OpenIDConnectSettingsT1:Authority"]!, 
+        configuration["OpenIDConnectSettingsT2:Authority"]!)
+    );
 
 app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();

@@ -2,7 +2,7 @@
 {
     public static class SecurityHeadersDefinitions
     {
-        public static HeaderPolicyCollection GetHeaderPolicyCollection(bool isDev, string idpHost)
+        public static HeaderPolicyCollection GetHeaderPolicyCollection(bool isDev, string idpHost1, string idpHost2)
         {
             var policy = new HeaderPolicyCollection()
                 .AddFrameOptionsDeny()
@@ -17,7 +17,7 @@
                     builder.AddObjectSrc().None();
                     builder.AddBlockAllMixedContent();
                     builder.AddImgSrc().Self().From("data:");
-                    builder.AddFormAction().Self().From(idpHost);
+                    builder.AddFormAction().Self().From(idpHost1).From(idpHost2);
                     builder.AddFontSrc().Self();
                     builder.AddStyleSrc().Self();
                     builder.AddBaseUri().Self();
