@@ -1,0 +1,13 @@
+﻿global using BlazorClient.Client;
+global using BlazorClient.Client.Services;
+global using BlazorClient.Shared.Authorization;
+global using BlazorClient.Shared.Defaults;
+global using Microsoft.AspNetCore.Components;
+global using Microsoft.AspNetCore.Components.Authorization;
+global using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using Microsoft.JSInterop;
+global using System.Net;
+global using System.Net.Http.Headers;
+global using System.Net.Http.Json;
+global using System.Security.Claims;
