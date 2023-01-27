@@ -60,7 +60,8 @@ public class Worker : IHostedService
                     PostLogoutRedirectUris =
                     {
                         new Uri("https://localhost:44360/signout-callback-oidc"),
-                        new Uri("https://localhost:5001/signout-callback-oidc")
+                        new Uri("https://localhost:5001/signout-callback-oidc"),
+                        new Uri("https://localhost:5001/signout-callback-oidc-t1")
                     },
                     RedirectUris =
                     {

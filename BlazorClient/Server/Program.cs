@@ -32,6 +32,7 @@ services.AddAuthentication(options =>
 
     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     options.CallbackPath = "/signin-oidc-t1";
+    options.SignedOutCallbackPath = "/signout-callback-oidc-t1";
     options.ResponseType = OpenIdConnectResponseType.Code;
     options.SaveTokens = true;
     options.GetClaimsFromUserInfoEndpoint = true;
@@ -48,6 +49,7 @@ services.AddAuthentication(options =>
     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     options.ResponseType = OpenIdConnectResponseType.Code;
     options.CallbackPath = "/signin-oidc-t2";
+    options.SignedOutCallbackPath = "/signout-callback-oidc-t2";
     options.SaveTokens = true;
     options.GetClaimsFromUserInfoEndpoint = true;
     options.TokenValidationParameters = new TokenValidationParameters
