@@ -25,7 +25,7 @@ services.AddAuthentication(options =>
 .AddCookie()
 .AddOpenIdConnect(options =>
 {
-    configuration.GetSection("OpenIDConnectSettings").Bind(options);
+    configuration.GetSection("OpenIDConnectSettingsT1").Bind(options);
 
     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     options.ResponseType = OpenIdConnectResponseType.Code;
