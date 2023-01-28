@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPageOidcClient", "Razo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPageOidcClientT2", "RazorPageOidcClientT2\RazorPageOidcClientT2.csproj", "{58C5E3F2-D093-46CB-9BE4-17053B7B3A39}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{395809EB-F9B0-4B2C-9C7C-9B9F9BD31AE1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_SolutionItems", "_SolutionItems", "{395809EB-F9B0-4B2C-9C7C-9B9F9BD31AE1}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		README.md = README.md
@@ -21,11 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityProviderT2", "Ident
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorClient", "BlazorClient", "{C7ECF763-2894-4881-B3F4-62B70824569F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorClient.Client", "BlazorClient\Client\BlazorClient.Client.csproj", "{4BDFBF49-66A6-462F-BBFD-8367613ADCE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorClient.Client", "BlazorClient\Client\BlazorClient.Client.csproj", "{4BDFBF49-66A6-462F-BBFD-8367613ADCE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorClient.Server", "BlazorClient\Server\BlazorClient.Server.csproj", "{970C1F77-2272-4302-A8E7-DF1B6FA0F13E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorClient.Server", "BlazorClient\Server\BlazorClient.Server.csproj", "{970C1F77-2272-4302-A8E7-DF1B6FA0F13E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorClient.Shared", "BlazorClient\Shared\BlazorClient.Shared.csproj", "{B61F2026-3764-4DF3-8941-44F7CB4D8C38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorClient.Shared", "BlazorClient\Shared\BlazorClient.Shared.csproj", "{B61F2026-3764-4DF3-8941-44F7CB4D8C38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
