@@ -1,4 +1,4 @@
-# Web API authorization in ASP.NET Core
+# Web API authorization, multi-IDP solutions in ASP.NET Core
 
 [![.NET](https://github.com/damienbod/ApiJwtWithTwoSts/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/ApiJwtWithTwoSts/actions/workflows/dotnet.yml)
 
