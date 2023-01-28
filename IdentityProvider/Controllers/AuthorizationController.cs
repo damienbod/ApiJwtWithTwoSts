@@ -165,6 +165,9 @@ public class AuthorizationController : Controller
 
                 principal.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
 
+                if (!principal.Claims.Any(claim => claim.Type == "idp"))
+                    principal.AddClaim("idp", "T1");
+
                 foreach (var claim in principal.Claims)
                 {
                     claim.SetDestinations(GetDestinations(claim, principal));
@@ -256,6 +259,9 @@ public class AuthorizationController : Controller
 
         principal.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
 
+        if (!principal.Claims.Any(claim => claim.Type == "idp"))
+            principal.AddClaim("idp", "T1");
+
         foreach (var claim in principal.Claims)
         {
             claim.SetDestinations(GetDestinations(claim, principal));
@@ -338,6 +344,9 @@ public class AuthorizationController : Controller
             principal.SetScopes(request.GetScopes());
             principal.SetResources(await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
 
+            if (!principal.Claims.Any(claim => claim.Type == "idp"))
+                principal.AddClaim("idp", "T1");
+
             foreach (var claim in principal.Claims)
             {
                 claim.SetDestinations(GetDestinations(claim, principal));
@@ -382,6 +391,9 @@ public class AuthorizationController : Controller
                 }));
         }
 
+        if (!principal.Claims.Any(claim => claim.Type == "idp"))
+            principal.AddClaim("idp", "T1");
+
         foreach (var claim in principal.Claims)
         {
             claim.SetDestinations(GetDestinations(claim, principal));
@@ -399,6 +411,11 @@ public class AuthorizationController : Controller
 
         switch (claim.Type)
         {
+            case "idp":
+                yield return Destinations.IdentityToken;
+
+                yield break;
+
             case Claims.Name:
                 yield return Destinations.AccessToken;
 

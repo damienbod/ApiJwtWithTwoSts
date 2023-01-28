@@ -9,15 +9,20 @@
         <div class="top-row px-4 auth">
             <AuthorizeView>
                 <Authorized>
-                    <strong>Hello, @context?.User?.Identity?.Name!</strong>
-                    <form method="post" action="api/Account/LogoutT1">
+                    <strong>@context?.User?.Identity?.Name! idp: @context?.User?.Claims.FirstOrDefault(c => c.Type == "idp")?.Value</strong>
+                    <form method="post" action="api/Account/Logout">
+                        <AntiForgeryTokenInput />
+                        <button class="btn btn-link" type="submit">Signout</button>
+                    </form>
+
+                    @*<form method="post" action="api/Account/LogoutT1">
                         <AntiForgeryTokenInput/>
                         <button class="btn btn-link" type="submit">Signout T1</button>
                     </form>
                     <form method="post" action="api/Account/LogoutT2">
                         <AntiForgeryTokenInput/>
                         <button class="btn btn-link" type="submit">Signout T2</button>
-                    </form>
+                    </form>*@
                 </Authorized>
                 <NotAuthorized>
                     <a href="api/Account/LoginT1">Login T1</a>
