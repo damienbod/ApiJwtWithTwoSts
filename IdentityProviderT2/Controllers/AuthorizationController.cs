@@ -346,7 +346,7 @@ public class AuthorizationController : Controller
 
             if (!principal.Claims.Any(claim => claim.Type == "idp"))
                 principal.AddClaim("idp", "T2"); 
-            principal.AddClaim("idp", "T2");
+
             foreach (var claim in principal.Claims)
             {
                 claim.SetDestinations(GetDestinations(claim, principal));
