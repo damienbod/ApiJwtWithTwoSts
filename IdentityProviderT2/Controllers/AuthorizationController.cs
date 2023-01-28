@@ -165,7 +165,9 @@ public class AuthorizationController : Controller
 
                 principal.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
 
-                principal.AddClaim("idp", "T2");
+                if (!principal.Claims.Any(claim => claim.Type == "idp"))
+                    principal.AddClaim("idp", "T2");
+
                 foreach (var claim in principal.Claims)
                 {
                     claim.SetDestinations(GetDestinations(claim, principal));
@@ -257,7 +259,9 @@ public class AuthorizationController : Controller
 
         principal.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
 
-        principal.AddClaim("idp", "T2");
+        if(!principal.Claims.Any(claim => claim.Type == "idp"))
+            principal.AddClaim("idp", "T2");
+
         foreach (var claim in principal.Claims)
         {
             claim.SetDestinations(GetDestinations(claim, principal));
@@ -340,6 +344,8 @@ public class AuthorizationController : Controller
             principal.SetScopes(request.GetScopes());
             principal.SetResources(await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
 
+            if (!principal.Claims.Any(claim => claim.Type == "idp"))
+                principal.AddClaim("idp", "T2"); 
             principal.AddClaim("idp", "T2");
             foreach (var claim in principal.Claims)
             {
@@ -385,7 +391,9 @@ public class AuthorizationController : Controller
                 }));
         }
 
-        principal.AddClaim("idp", "T2");
+        if (!principal.Claims.Any(claim => claim.Type == "idp"))
+            principal.AddClaim("idp", "T2");
+
         foreach (var claim in principal.Claims)
         {
             claim.SetDestinations(GetDestinations(claim, principal));
