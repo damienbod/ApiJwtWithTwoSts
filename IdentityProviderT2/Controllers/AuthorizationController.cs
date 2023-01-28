@@ -165,6 +165,7 @@ public class AuthorizationController : Controller
 
                 principal.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
 
+                principal.AddClaim("idp", "T2");
                 foreach (var claim in principal.Claims)
                 {
                     claim.SetDestinations(GetDestinations(claim, principal));
@@ -256,6 +257,7 @@ public class AuthorizationController : Controller
 
         principal.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
 
+        principal.AddClaim("idp", "T2");
         foreach (var claim in principal.Claims)
         {
             claim.SetDestinations(GetDestinations(claim, principal));
@@ -338,6 +340,7 @@ public class AuthorizationController : Controller
             principal.SetScopes(request.GetScopes());
             principal.SetResources(await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
 
+            principal.AddClaim("idp", "T2");
             foreach (var claim in principal.Claims)
             {
                 claim.SetDestinations(GetDestinations(claim, principal));
@@ -382,6 +385,7 @@ public class AuthorizationController : Controller
                 }));
         }
 
+        principal.AddClaim("idp", "T2");
         foreach (var claim in principal.Claims)
         {
             claim.SetDestinations(GetDestinations(claim, principal));
@@ -399,6 +403,11 @@ public class AuthorizationController : Controller
 
         switch (claim.Type)
         {
+            case "idp":
+                yield return Destinations.IdentityToken;
+
+                yield break;
+
             case Claims.Name:
                 yield return Destinations.AccessToken;
 

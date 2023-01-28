@@ -1,5 +1,6 @@
 ﻿using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 IdentityModelEventSource.ShowPII = true;
 
@@ -35,6 +36,7 @@ services.AddAuthentication(options =>
     options.SignedOutCallbackPath = "/signout-callback-oidc-t1";
     options.ResponseType = OpenIdConnectResponseType.Code;
     options.SaveTokens = true;
+    options.Scope.Add("profile");
     options.GetClaimsFromUserInfoEndpoint = true;
     options.TokenValidationParameters = new TokenValidationParameters
     {
@@ -51,6 +53,7 @@ services.AddAuthentication(options =>
     options.CallbackPath = "/signin-oidc-t2";
     options.SignedOutCallbackPath = "/signout-callback-oidc-t2";
     options.SaveTokens = true;
+    options.Scope.Add("profile");
     options.GetClaimsFromUserInfoEndpoint = true;
     options.TokenValidationParameters = new TokenValidationParameters
     {
@@ -71,6 +74,8 @@ services.AddRazorPages().AddMvcOptions(options =>
 });
 
 var app = builder.Build();
+
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 if (env.IsDevelopment())
 {
