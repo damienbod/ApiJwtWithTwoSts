@@ -22,6 +22,29 @@ namespace BlazorClient.Server.Controllers
 
         [ValidateAntiForgeryToken]
         [Authorize]
+        [HttpPost("Logout")]
+        public IActionResult Logout()
+        {
+            var authProperties = new AuthenticationProperties
+            {
+                RedirectUri = "/"
+            };
+
+            // custom claims added to idp, you need to implement something on your idp for this
+            var usedT1ForAuthn = User.Claims.Any(idpClaim => idpClaim.Type == "idp" && idpClaim.Value == "T1");
+            var usedT2ForAuthn = User.Claims.Any(idpClaim => idpClaim.Type == "idp" && idpClaim.Value == "T2");
+
+            if(usedT1ForAuthn) 
+                return SignOut(authProperties, CookieAuthenticationDefaults.AuthenticationScheme, "T1");
+
+            if (usedT2ForAuthn)
+                return SignOut(authProperties, CookieAuthenticationDefaults.AuthenticationScheme, "T2");
+
+            return SignOut(authProperties, CookieAuthenticationDefaults.AuthenticationScheme);
+        }
+
+        [ValidateAntiForgeryToken]
+        [Authorize]
         [HttpPost("LogoutT1")]
         public IActionResult LogoutT1() => SignOut(new AuthenticationProperties
         {
