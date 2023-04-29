@@ -10,6 +10,8 @@
 
 ## History
 
+2023-04-29 Updated packages
+
 2023-01-28 Updated packages, added Blazor multi idp client
 
 2022-12-24 Updated OpenIddict
