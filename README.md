@@ -1,4 +1,4 @@
-# Web API authorization in ASP.NET Core
+# Web API authorization, multi-IDP solutions in ASP.NET Core
 
 [![.NET](https://github.com/damienbod/ApiJwtWithTwoSts/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/ApiJwtWithTwoSts/actions/workflows/dotnet.yml)
 
@@ -7,6 +7,8 @@
 [Securing an ASP.NET Core API which uses multiple access tokens](https://damienbod.com/2020/12/03/securing-an-asp-net-core-api-which-uses-multiple-access-tokens/)
 
 [Securing a Web API using multiple token servers](https://damienbod.com/2019/10/25/securing-a-web-api-using-multiple-token-servers/)
+
+[Blogged: Use multiple identity providers from a Blazor WASM ASP.NET Core App secured using BFF](https://damienbod.com/2023/02/14/use-multiple-identity-providers-from-a-blazor-wasm-asp-net-core-app-secured-using-bff/)
 
 ## History
 
