@@ -1,60 +1,36 @@
+using OpeniddictServer;
 using Serilog;
-using Serilog.Events;
-using Serilog.Sinks.SystemConsole.Themes;
 
-namespace OpeniddictServer;
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
 
-public class Program
+try
 {
-    public static int Main(string[] args)
-    {
-        Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .Enrich.FromLogContext()
-            .WriteTo.Console()
-            .CreateLogger();
+    Log.Information("Starting WebApi");
 
-        try
-        {
-            Log.Information("Starting web host");
-            CreateHostBuilder(args).Build().Run();
-            return 0;
-        }
-        catch (Exception ex)
-        {
-            Log.Fatal(ex, "Host terminated unexpectedly");
-            return 1;
-        }
-        finally
-        {
-            Log.CloseAndFlush();
-        }
-    }
+    var builder = WebApplication.CreateBuilder(args);
 
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((context, config) =>
-            {
-                var builder = config.Build();
-                var keyVaultEndpoint = builder["AzureKeyVaultEndpoint"];
-                IHostEnvironment env = context.HostingEnvironment;
+    builder.Host.UseSerilog((context, loggerConfiguration) => loggerConfiguration
+        .ReadFrom.Configuration(context.Configuration));
 
-                config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
-                    .AddEnvironmentVariables();
-                //.AddUserSecrets("your user secret....");
+    var app = builder
+        .ConfigureServices()
+        .ConfigurePipeline();
 
-            })
-            .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
-                .ReadFrom.Configuration(hostingContext.Configuration)
-                .Enrich.FromLogContext()
-                .WriteTo.File("../_logs-IdentityProviderT2.txt")
-                .WriteTo.Console(theme: AnsiConsoleTheme.Code)
-            )
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            });
-
+    app.Run();
 }
+catch (Exception ex) when (ex.GetType().Name is not "StopTheHostException"
+    && ex.GetType().Name is not "HostAbortedException")
+{
+    Log.Fatal(ex, "Unhandled exception");
+}
+finally
+{
+    Log.Information("Shut down complete");
+    Log.CloseAndFlush();
+}
+
+
+
+
