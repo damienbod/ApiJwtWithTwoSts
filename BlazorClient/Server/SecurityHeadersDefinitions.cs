@@ -56,6 +56,8 @@
                 policy.AddStrictTransportSecurityMaxAgeIncludeSubDomains();
             }
 
+            policy.ApplyDocumentHeadersToAllResponses();
+
             return policy;
         }
     }
