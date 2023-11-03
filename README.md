@@ -12,34 +12,22 @@
 
 ## History
 
-2023-08-20 Updated packages, hosting and dev 
+- 2023-11-03 Updated packages, fixed security headers
+- 2023-08-20 Updated packages, hosting and dev 
+- 2023-06-20 Updated packages
+- 2023-04-29 Updated packages
+- 2023-01-28 Updated packages, added Blazor multi idp client
+- 2022-12-24 Updated OpenIddict
+- 2022-12-20 Updated code so that default scheme has a handler
+- 2022-12-18 Updated nuget packages to .NET 7
+- 2022-10-15 Updated nuget packages, Update C# code style
+- 2022-01-05 Updated nuget packages
+- 2021-08-29 Updated nuget packages
+- 2021-01-21 Updated nuget packages, npm packages
+- 2020-12-03 Update to .NET 5, added ASP.NET Core policies
+- 2020-10-10 Updated nuget packages
+- 2020-01-04 Update to .NET Core 3.1
 
-2023-06-20 Updated packages
-
-2023-04-29 Updated packages
-
-2023-01-28 Updated packages, added Blazor multi idp client
-
-2022-12-24 Updated OpenIddict
-
-2022-12-20 Updated code so that default scheme has a handler
-
-2022-12-18 Updated nuget packages to .NET 7
-
-2022-10-15 Updated nuget packages, Update C# code style
-
-2022-01-05 Updated nuget packages
-
-2021-08-29 Updated nuget packages
-
-2021-01-21 Updated nuget packages, npm packages
-
-2020-12-03 Update to .NET 5, added ASP.NET Core policies
-
-2020-10-10 Updated nuget packages
-
-2020-01-04 Update to .NET Core 3.1
-
-# Links
+## Links
 
 https://learn.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-7.0
