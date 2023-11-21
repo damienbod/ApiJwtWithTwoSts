@@ -1,8 +1,5 @@
-﻿using Microsoft.IdentityModel.Logging;
+﻿using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-
-IdentityModelEventSource.ShowPII = true;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -75,7 +72,7 @@ services.AddRazorPages().AddMvcOptions(options =>
 
 var app = builder.Build();
 
-JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 if (env.IsDevelopment())
 {

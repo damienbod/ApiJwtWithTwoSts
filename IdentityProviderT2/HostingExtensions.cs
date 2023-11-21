@@ -2,11 +2,11 @@ using Fido2Identity;
 using Fido2NetLib;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
 using OpeniddictServer.Data;
 using Quartz;
 using Serilog;
-using System.IdentityModel.Tokens.Jwt;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
 namespace OpeniddictServer;
@@ -173,7 +173,7 @@ internal static class HostingExtensions
     public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         IdentityModelEventSource.ShowPII = true;
-        JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+        JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
         app.UseSerilogRequestLogging();
 

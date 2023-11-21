@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace RazorPageOidcClient;
 
@@ -61,7 +60,7 @@ internal static class HostingExtensions
     public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         IdentityModelEventSource.ShowPII = true;
-        JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+        JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
         app.UseSerilogRequestLogging();
 
