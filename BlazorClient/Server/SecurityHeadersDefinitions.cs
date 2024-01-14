@@ -1,64 +1,61 @@
 ﻿namespace BlazorClient.Server
+public static class SecurityHeadersDefinitions
 {
-    public static class SecurityHeadersDefinitions
+    public static HeaderPolicyCollection GetHeaderPolicyCollection(bool isDev, string? idpHost)
     {
-        public static HeaderPolicyCollection GetHeaderPolicyCollection(bool isDev, string idpHost1, string idpHost2)
-        {
-            var policy = new HeaderPolicyCollection()
-                .AddFrameOptionsDeny()
-                .AddContentTypeOptionsNoSniff()
-                .AddReferrerPolicyStrictOriginWhenCrossOrigin()
-                .AddCrossOriginOpenerPolicy(builder => builder.SameOrigin())
-                .AddCrossOriginResourcePolicy(builder => builder.SameOrigin())
-                .AddCrossOriginEmbedderPolicy(builder => builder.RequireCorp()) // remove for dev if using hot reload
-                .AddContentSecurityPolicy(builder =>
-                {
-                    builder.AddObjectSrc().None();
-                    builder.AddBlockAllMixedContent();
-                    builder.AddImgSrc().Self().From("data:");
-                    builder.AddFormAction().Self().From(idpHost1).From(idpHost2);
-                    builder.AddFontSrc().Self();
-                    builder.AddStyleSrc().Self();
-                    builder.AddBaseUri().Self();
-                    builder.AddFrameAncestors().None();
+        ArgumentNullException.ThrowIfNull(idpHost);
 
-                    // due to Blazor
-                    builder.AddScriptSrc()
-                        .Self()
-                        .WithHash256("v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=")
-                        .UnsafeEval();
-
-                    // disable script and style CSP protection if using Blazor hot reload
-                    // if using hot reload, DO NOT deploy with an insecure CSP
-                })
-                .RemoveServerHeader()
-                .AddPermissionsPolicy(builder =>
-                {
-                    builder.AddAccelerometer().None();
-                    builder.AddAutoplay().None();
-                    builder.AddCamera().None();
-                    builder.AddEncryptedMedia().None();
-                    builder.AddFullscreen().All();
-                    builder.AddGeolocation().None();
-                    builder.AddGyroscope().None();
-                    builder.AddMagnetometer().None();
-                    builder.AddMicrophone().None();
-                    builder.AddMidi().None();
-                    builder.AddPayment().None();
-                    builder.AddPictureInPicture().None();
-                    builder.AddSyncXHR().None();
-                    builder.AddUsb().None();
-                });
-
-            if (!isDev)
+        var policy = new HeaderPolicyCollection()
+            .AddFrameOptionsDeny()
+            .AddContentTypeOptionsNoSniff()
+            .AddReferrerPolicyStrictOriginWhenCrossOrigin()
+            .AddCrossOriginOpenerPolicy(builder => builder.SameOrigin())
+            .AddCrossOriginResourcePolicy(builder => builder.SameOrigin())
+            .AddCrossOriginEmbedderPolicy(builder => builder.RequireCorp())
+            .AddContentSecurityPolicy(builder =>
             {
-                // maxage = one year in seconds
-                policy.AddStrictTransportSecurityMaxAgeIncludeSubDomains();
-            }
+                builder.AddObjectSrc().None();
+                builder.AddBlockAllMixedContent();
+                builder.AddImgSrc().Self().From("data:");
+                builder.AddFormAction().Self().From(idpHost);
+                builder.AddFontSrc().Self();
+                builder.AddStyleSrc().Self();
+                builder.AddBaseUri().Self();
+                builder.AddFrameAncestors().None();
 
-            policy.ApplyDocumentHeadersToAllResponses();
+                // due to Blazor
+                builder.AddScriptSrc()
+                    // .Self() Add this if you want to use the visual studio debugging tools
+                    .WithNonce()
+                    .UnsafeEval();
+            })
+            .RemoveServerHeader()
+            .AddPermissionsPolicy(builder =>
+            {
+                builder.AddAccelerometer().None();
+                builder.AddAutoplay().None();
+                builder.AddCamera().None();
+                builder.AddEncryptedMedia().None();
+                builder.AddFullscreen().All();
+                builder.AddGeolocation().None();
+                builder.AddGyroscope().None();
+                builder.AddMagnetometer().None();
+                builder.AddMicrophone().None();
+                builder.AddMidi().None();
+                builder.AddPayment().None();
+                builder.AddPictureInPicture().None();
+                builder.AddSyncXHR().None();
+                builder.AddUsb().None();
+            });
 
-            return policy;
+        if (!isDev)
+        {
+            // maxage = one year in seconds
+            policy.AddStrictTransportSecurityMaxAgeIncludeSubDomains();
         }
+
+        policy.ApplyDocumentHeadersToAllResponses();
+
+        return policy;
     }
 }
