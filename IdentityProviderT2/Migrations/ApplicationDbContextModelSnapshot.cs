@@ -15,7 +15,7 @@ namespace IdentityProvider.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.8");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.1");
 
             modelBuilder.Entity("Fido2Identity.FidoStoredCredential", b =>
                 {
@@ -189,11 +189,19 @@ namespace IdentityProvider.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("ApplicationType")
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ClientId")
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ClientSecret")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClientType")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyToken")
@@ -211,6 +219,9 @@ namespace IdentityProvider.Migrations
                     b.Property<string>("DisplayNames")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("JsonWebKeySet")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Permissions")
                         .HasColumnType("TEXT");
 
@@ -226,8 +237,7 @@ namespace IdentityProvider.Migrations
                     b.Property<string>("Requirements")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Type")
-                        .HasMaxLength(50)
+                    b.Property<string>("Settings")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
