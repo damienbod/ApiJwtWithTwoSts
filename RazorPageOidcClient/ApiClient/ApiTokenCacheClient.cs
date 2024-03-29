@@ -10,7 +10,7 @@ public class ApiTokenCacheClient
     private readonly HttpClient _httpClient;
     private readonly IOptions<AuthConfigurations> _authConfigurations;
 
-    private static readonly Object _lock = new();
+    private static readonly object _lock = new();
     private readonly IDistributedCache _cache;
 
     private const int cacheExpirationInDays = 1;
