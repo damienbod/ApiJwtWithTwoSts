@@ -72,15 +72,16 @@ public class ApiTokenCacheClient
                 throw new ApplicationException($"Status code: {disco.IsError}, Error: {disco.Error}");
             }
 
-            var tokenResponse = await HttpClientTokenRequestExtensions.RequestClientCredentialsTokenAsync(_httpClient, new ClientCredentialsTokenRequest
-            {
-                Scope = api_scope,
-                ClientSecret = secret,
-                Address = disco.TokenEndpoint,
-                ClientId = api_name
-            });
+            var tokenResponse = await HttpClientTokenRequestExtensions
+                .RequestClientCredentialsTokenAsync(_httpClient, new ClientCredentialsTokenRequest
+                {
+                    Scope = api_scope,
+                    ClientSecret = secret,
+                    Address = disco.TokenEndpoint,
+                    ClientId = api_name
+                });
 
-            if (tokenResponse.IsError)
+            if (tokenResponse.IsError || tokenResponse.AccessToken == null)
             {
                 _logger.LogError("tokenResponse.IsError Status code: {tokenResponseIsError}, Error: {tokenResponseError}", tokenResponse.IsError, tokenResponse.Error);
                 throw new ApplicationException($"Status code: {tokenResponse.IsError}, Error: {tokenResponse.Error}");
@@ -102,7 +103,8 @@ public class ApiTokenCacheClient
 
     private void AddToCache(string key, AccessTokenItem accessTokenItem)
     {
-        var options = new DistributedCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromDays(cacheExpirationInDays));
+        var options = new DistributedCacheEntryOptions()
+            .SetSlidingExpiration(TimeSpan.FromDays(cacheExpirationInDays));
 
         lock (_lock)
         {
