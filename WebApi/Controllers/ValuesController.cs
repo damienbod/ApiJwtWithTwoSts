@@ -10,6 +10,6 @@ public class ValuesController : Controller
     [HttpGet]
     public IEnumerable<string> Get()
     {
-        return new string[] { "data 1 from the api", "data 2 from the api" };
+        return ["data 1 from the api", "data 2 from the api"];
     }
 }
