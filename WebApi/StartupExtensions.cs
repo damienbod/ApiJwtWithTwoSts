@@ -9,7 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace WebApi;
 
-internal static class HostingExtensions
+internal static class StartupExtensions
 {
     private static IWebHostEnvironment? _env;
 
