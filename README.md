@@ -12,6 +12,7 @@
 
 ## History
 
+- 2024-08-08 Updated packages
 - 2024-06-22 Updated packages
 - 2024-04-24 Updated packages
 - 2024-03-29 Updated packages
