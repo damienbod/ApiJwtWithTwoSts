@@ -1,11 +1,20 @@
 ﻿using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
+using NetEscapades.AspNetCore.SecurityHeaders.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 var configuration = builder.Configuration;
 var env = builder.Environment;
+
+services.AddSecurityHeaderPolicies()
+  .SetPolicySelector((PolicySelectorContext ctx) =>
+  {
+      return SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment(),
+        configuration["OpenIDConnectSettingsT1:Authority"]!,
+        configuration["OpenIDConnectSettingsT2:Authority"]!);
+  });
 
 services.AddAntiforgery(options =>
 {
@@ -84,10 +93,7 @@ else
     app.UseExceptionHandler("/Error");
 }
 
-app.UseSecurityHeaders(SecurityHeadersDefinitions.GetHeaderPolicyCollection(env.IsDevelopment(),
-        configuration["OpenIDConnectSettingsT1:Authority"]!, 
-        configuration["OpenIDConnectSettingsT2:Authority"]!)
-    );
+app.UseSecurityHeaders();
 
 app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();

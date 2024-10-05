@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
+using NetEscapades.AspNetCore.SecurityHeaders.Infrastructure;
 using Serilog;
 
 namespace RazorPageOidcClient;
@@ -16,6 +17,12 @@ internal static class HostingExtensions
         var services = builder.Services;
         var configuration = builder.Configuration;
         _env = builder.Environment;
+
+        services.AddSecurityHeaderPolicies()
+            .SetPolicySelector((PolicySelectorContext ctx) =>
+            {
+                return SecurityHeadersDefinitions.GetHeaderPolicyCollection(_env!.IsDevelopment());
+            });
 
         services.AddTransient<ApiService>();
         services.AddSingleton<ApiTokenInMemoryClient>();
@@ -73,8 +80,7 @@ internal static class HostingExtensions
             app.UseExceptionHandler("/Error");
         }
 
-        app.UseSecurityHeaders(
-            SecurityHeadersDefinitions.GetHeaderPolicyCollection(_env!.IsDevelopment()));
+        app.UseSecurityHeaders();
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();

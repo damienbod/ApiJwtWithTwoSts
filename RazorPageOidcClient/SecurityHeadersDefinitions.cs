@@ -27,31 +27,13 @@ public static class SecurityHeadersDefinitions
                 // builder.AddCustomDirective("require-trusted-types-for", "'script'");
             })
             .RemoveServerHeader()
-            .AddPermissionsPolicy(builder =>
-            {
-                builder.AddAccelerometer().None();
-                builder.AddAutoplay().None();
-                builder.AddCamera().None();
-                builder.AddEncryptedMedia().None();
-                builder.AddFullscreen().All();
-                builder.AddGeolocation().None();
-                builder.AddGyroscope().None();
-                builder.AddMagnetometer().None();
-                builder.AddMicrophone().None();
-                builder.AddMidi().None();
-                builder.AddPayment().None();
-                builder.AddPictureInPicture().None();
-                builder.AddSyncXHR().None();
-                builder.AddUsb().None();
-            });
+            .AddPermissionsPolicyWithDefaultSecureDirectives();
 
         if (!isDev)
         {
             // maxage = one year in seconds
             policy.AddStrictTransportSecurityMaxAgeIncludeSubDomains(maxAgeInSeconds: 60 * 60 * 24 * 365);
         }
-
-        policy.ApplyDocumentHeadersToAllResponses();
 
         return policy;
     }
