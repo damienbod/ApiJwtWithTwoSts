@@ -11,15 +11,12 @@ namespace WebApi;
 
 internal static class StartupExtensions
 {
-    private static IWebHostEnvironment? _env;
-
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
         var services = builder.Services;
         var configuration = builder.Configuration;
-        _env = builder.Environment;
-
-        var x509Certificate2 = GetCertificate(_env);
+ 
+        var x509Certificate2 = GetCertificate(builder.Environment);
 
         services.AddSingleton<IAuthorizationHandler, MyApiHandler>();
 
@@ -139,7 +136,7 @@ internal static class StartupExtensions
 
         app.UseSerilogRequestLogging();
 
-        if (_env!.IsDevelopment())
+        if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
         }
