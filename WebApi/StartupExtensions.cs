@@ -15,7 +15,7 @@ internal static class StartupExtensions
     {
         var services = builder.Services;
         var configuration = builder.Configuration;
- 
+
         var x509Certificate2 = GetCertificate(builder.Environment);
 
         services.AddSingleton<IAuthorizationHandler, MyApiHandler>();
@@ -128,7 +128,7 @@ internal static class StartupExtensions
 
         return builder.Build();
     }
-    
+
     public static WebApplication ConfigurePipeline(this WebApplication app)
     {
         IdentityModelEventSource.ShowPII = true;

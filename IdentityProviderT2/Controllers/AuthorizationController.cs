@@ -4,15 +4,9 @@
  * the license and the contributors participating to this project.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
@@ -22,6 +16,7 @@ using OpenIddict.Server.AspNetCore;
 using OpeniddictServer.Data;
 using OpeniddictServer.Helpers;
 using OpeniddictServer.ViewModels.Authorization;
+using System.Security.Claims;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
 namespace OpeniddictServer.Controllers;
@@ -259,7 +254,7 @@ public class AuthorizationController : Controller
 
         principal.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
 
-        if(!principal.Claims.Any(claim => claim.Type == "idp"))
+        if (!principal.Claims.Any(claim => claim.Type == "idp"))
             principal.AddClaim("idp", "T2");
 
         foreach (var claim in principal.Claims)
@@ -345,7 +340,7 @@ public class AuthorizationController : Controller
             principal.SetResources(await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
 
             if (!principal.Claims.Any(claim => claim.Type == "idp"))
-                principal.AddClaim("idp", "T2"); 
+                principal.AddClaim("idp", "T2");
 
             foreach (var claim in principal.Claims)
             {

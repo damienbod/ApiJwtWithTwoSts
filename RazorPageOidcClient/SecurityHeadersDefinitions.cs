@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace RazorPageOidcClient;
+﻿namespace RazorPageOidcClient;
 
 public static class SecurityHeadersDefinitions
 {

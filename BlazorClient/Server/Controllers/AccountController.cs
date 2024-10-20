@@ -34,7 +34,7 @@ namespace BlazorClient.Server.Controllers
             var usedT1ForAuthn = User.Claims.Any(idpClaim => idpClaim.Type == "idp" && idpClaim.Value == "T1");
             var usedT2ForAuthn = User.Claims.Any(idpClaim => idpClaim.Type == "idp" && idpClaim.Value == "T2");
 
-            if(usedT1ForAuthn) 
+            if (usedT1ForAuthn)
                 return SignOut(authProperties, CookieAuthenticationDefaults.AuthenticationScheme, "T1");
 
             if (usedT2ForAuthn)

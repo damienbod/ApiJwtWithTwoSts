@@ -1,6 +1,5 @@
-using WebApi;
-
 using Serilog;
+using WebApi;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()

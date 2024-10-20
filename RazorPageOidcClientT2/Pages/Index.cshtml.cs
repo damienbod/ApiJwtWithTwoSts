@@ -18,7 +18,7 @@ public class IndexModel : PageModel
     {
         //var result = await _apiService.GetUnsecureApiDataAsync();
         var resultSecure = await _apiService.GetApiDataAsync();
-        if(resultSecure != null)
+        if (resultSecure != null)
             Data = resultSecure;
 
         Console.WriteLine(resultSecure!.FirstOrDefault());
