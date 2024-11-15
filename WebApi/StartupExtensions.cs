@@ -165,10 +165,9 @@ internal static class StartupExtensions
 
     private static X509Certificate2 GetCertificate(IWebHostEnvironment environment)
     {
-        X509Certificate2 cert;
-
-        cert = new X509Certificate2(Path.Combine(environment.ContentRootPath, "sts_dev_cert.pfx"), "1234");
-
+        var cert = X509CertificateLoader
+            .LoadPkcs12FromFile(Path.Combine(environment.ContentRootPath, "sts_dev_cert.pfx"), "1234");
+    
         return cert;
     }
 }
