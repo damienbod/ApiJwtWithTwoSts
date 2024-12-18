@@ -73,7 +73,7 @@ public class Worker : IHostedService
                     Permissions =
                     {
                         Permissions.Endpoints.Authorization,
-                        Permissions.Endpoints.Logout,
+                        Permissions.Endpoints.EndSession,
                         Permissions.Endpoints.Token,
                         Permissions.Endpoints.Revocation,
                         Permissions.GrantTypes.AuthorizationCode,

@@ -12,6 +12,8 @@
 
 ## History
 
+
+- 2024-12-18 OpenIddict 6.0
 - 2024-11-15 .NET 9
 - 2024-10-05 Updated packages
 - 2024-08-08 Updated packages

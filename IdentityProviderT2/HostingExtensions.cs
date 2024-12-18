@@ -119,10 +119,10 @@ internal static class HostingExtensions
                 options.SetAuthorizationEndpointUris("connect/authorize")
                    //.SetDeviceEndpointUris("connect/device")
                    .SetIntrospectionEndpointUris("connect/introspect")
-                   .SetLogoutEndpointUris("connect/logout")
+                   .SetEndSessionEndpointUris("connect/logout")
                    .SetTokenEndpointUris("connect/token")
-                   .SetUserinfoEndpointUris("connect/userinfo")
-                   .SetVerificationEndpointUris("connect/verify");
+                   .SetUserInfoEndpointUris("connect/userinfo")
+                   .SetEndUserVerificationEndpointUris("connect/verify");
 
                 // Note: this sample uses the code, device code, password and refresh token flows, but you
                 // can enable the other flows if you need to support implicit or client credentials.
@@ -144,9 +144,9 @@ internal static class HostingExtensions
                 // Register the ASP.NET Core host and configure the ASP.NET Core-specific options.
                 options.UseAspNetCore()
                        .EnableAuthorizationEndpointPassthrough()
-                       .EnableLogoutEndpointPassthrough()
+                       .EnableEndSessionEndpointPassthrough()
                        .EnableTokenEndpointPassthrough()
-                       .EnableUserinfoEndpointPassthrough()
+                       .EnableUserInfoEndpointPassthrough()
                        .EnableStatusCodePagesIntegration();
             })
 
