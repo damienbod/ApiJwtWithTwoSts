@@ -167,7 +167,7 @@ internal static class StartupExtensions
     {
         var cert = X509CertificateLoader
             .LoadPkcs12FromFile(Path.Combine(environment.ContentRootPath, "sts_dev_cert.pfx"), "1234");
-    
+
         return cert;
     }
 }
