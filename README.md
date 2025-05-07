@@ -12,6 +12,7 @@
 
 ## History
 
+- 2025-05-07 Updated packages
 - 2025-02-02 Updated packages
 - 2024-12-21 Bootstrap 5
 - 2024-12-18 OpenIddict 6.0
@@ -41,4 +42,4 @@
 
 ## Links
 
-https://learn.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-7.0
+https://learn.microsoft.com/en-us/aspnet/core/security/authentication/
