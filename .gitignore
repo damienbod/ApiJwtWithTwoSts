@@ -8,11 +8,6 @@
 /StsLogs.txt
 /StsLogsT2.txt
 /WebApi.txt
-/_logs-RazorPageOidcClient.txt
-/_logs-RazorPageOidcClient2.txt
-/_logs-WebApi.txt
-/_logs-STS-T1.txt
-/_logs-STS-T2.txt
-/_logs-IdentityProvider.txt
-/_logs-IdentityProviderT2.txt
-/_logs-RazorPageOidcClientT2.txt
+/_logs**
+/**.slnLaunch.user
+/**.sqlite
