@@ -12,6 +12,7 @@
 
 ## History
 
+- 2025-07-05 Updated packages
 - 2025-05-07 Updated packages
 - 2025-02-02 Updated packages
 - 2024-12-21 Bootstrap 5
