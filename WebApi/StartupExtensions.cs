@@ -89,41 +89,19 @@ internal static class StartupExtensions
 
         services.AddControllers();
 
-        services.AddSwaggerGen(c =>
+        builder.Services.AddOpenApi(options =>
         {
-            // add JWT Authentication
-            var securityScheme = new OpenApiSecurityScheme
-            {
-                Name = "JWT Authentication",
-                Description = "Enter JWT Bearer token **_only_**",
-                In = ParameterLocation.Header,
-                Type = SecuritySchemeType.Http,
-                Scheme = "bearer", // must be lower case
-                BearerFormat = "JWT",
-                Reference = new OpenApiReference
-                {
-                    Id = JwtBearerDefaults.AuthenticationScheme,
-                    Type = ReferenceType.SecurityScheme
-                }
-            };
-            c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
-            c.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {securityScheme, Array.Empty<string>()}
-            });
-
-            c.SwaggerDoc("v1", new OpenApiInfo
-            {
-                Title = "An API ",
-                Version = "v1",
-                Description = "An API",
-                Contact = new OpenApiContact
-                {
-                    Name = "damienbod",
-                    Email = string.Empty,
-                    Url = new Uri("https://damienbod.com/"),
-                },
-            });
+            //options.UseTransformer((document, context, cancellationToken) =>
+            //{
+            //    document.Info = new()
+            //    {
+            //        Title = "My API",
+            //        Version = "v1",
+            //        Description = "API for Damien"
+            //    };
+            //    return Task.CompletedTask;
+            //});
+            options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
         });
 
         return builder.Build();
@@ -146,19 +124,24 @@ internal static class StartupExtensions
             app.UseHsts();
         }
 
-        app.UseSwagger();
-        app.UseSwaggerUI(c =>
-        {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Service API One");
-            c.RoutePrefix = string.Empty;
-        });
-
         app.UseStaticFiles();
         app.UseRouting();
         app.UseAuthentication();
         app.UseAuthorization();
 
         app.MapControllers();
+
+        //app.MapOpenApi(); // /openapi/v1.json
+        app.MapOpenApi("/openapi/v1/openapi.json");
+        //app.MapOpenApi("/openapi/{documentName}/openapi.json");
+
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/openapi/v1/openapi.json", "v1");
+            });
+        }
 
         return app;
     }
