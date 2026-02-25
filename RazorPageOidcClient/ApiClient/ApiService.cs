@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using System.Text.Json;
 
-namespace RazorPageOidcClientT2;
+namespace RazorPageOidcClient;
 
 public class ApiService
 {

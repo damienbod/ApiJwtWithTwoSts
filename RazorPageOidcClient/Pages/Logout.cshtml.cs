@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RazorPageOidcClientT2.Pages;
+namespace RazorPageOidcClient.Pages;
 
 [Authorize]
 public class LogoutModel : PageModel

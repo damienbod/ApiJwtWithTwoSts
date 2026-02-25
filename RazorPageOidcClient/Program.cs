@@ -1,4 +1,4 @@
-using RazorPageOidcClientT2;
+using RazorPageOidcClient;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
