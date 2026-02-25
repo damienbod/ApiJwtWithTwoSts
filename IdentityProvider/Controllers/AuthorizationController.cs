@@ -13,13 +13,13 @@ using Microsoft.Extensions.Primitives;
 using Microsoft.IdentityModel.Tokens;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
-using OpeniddictServer.Data;
-using OpeniddictServer.Helpers;
-using OpeniddictServer.ViewModels.Authorization;
+using IdentityProvider.Data;
+using IdentityProvider.Helpers;
+using IdentityProvider.ViewModels.Authorization;
 using System.Security.Claims;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
-namespace OpeniddictServer.Controllers;
+namespace IdentityProvider.Controllers;
 
 public class AuthorizationController : Controller
 {
@@ -160,9 +160,6 @@ public class AuthorizationController : Controller
 
                 principal.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
 
-                if (!principal.Claims.Any(claim => claim.Type == "idp"))
-                    principal.AddClaim("idp", "T1");
-
                 foreach (var claim in principal.Claims)
                 {
                     claim.SetDestinations(GetDestinations(claim, principal));
@@ -254,9 +251,6 @@ public class AuthorizationController : Controller
 
         principal.SetAuthorizationId(await _authorizationManager.GetIdAsync(authorization));
 
-        if (!principal.Claims.Any(claim => claim.Type == "idp"))
-            principal.AddClaim("idp", "T1");
-
         foreach (var claim in principal.Claims)
         {
             claim.SetDestinations(GetDestinations(claim, principal));
@@ -310,47 +304,49 @@ public class AuthorizationController : Controller
             // Note: the client credentials are automatically validated by OpenIddict:
             // if client_id or client_secret are invalid, this action won't be invoked.
 
-            var application = await _applicationManager.FindByClientIdAsync(request.ClientId);
-            if (application == null)
-            {
-                throw new InvalidOperationException("The application details cannot be found in the database.");
-            }
-
-            // Create the claims-based identity that will be used by OpenIddict to generate tokens.
-            var identity = new ClaimsIdentity(
-                authenticationType: TokenValidationParameters.DefaultAuthenticationType,
-                nameType: Claims.Name,
-                roleType: Claims.Role);
-
-            // Add the claims that will be persisted in the tokens (use the client_id as the subject identifier).
-            identity.AddClaim(Claims.Subject, await _applicationManager.GetClientIdAsync(application));
-            identity.AddClaim(Claims.Name, await _applicationManager.GetDisplayNameAsync(application));
-
-            // Note: In the original OAuth 2.0 specification, the client credentials grant
-            // doesn't return an identity token, which is an OpenID Connect concept.
-            //
-            // As a non-standardized extension, OpenIddict allows returning an id_token
-            // to convey information about the client application when the "openid" scope
-            // is granted (i.e specified when calling principal.SetScopes()). When the "openid"
-            // scope is not explicitly set, no identity token is returned to the client application.
-
-            // Set the list of scopes granted to the client application in access_token.
-            var principal = new ClaimsPrincipal(identity);
-            principal.SetScopes(request.GetScopes());
-            principal.SetResources(await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
-
-            if (!principal.Claims.Any(claim => claim.Type == "idp"))
-                principal.AddClaim("idp", "T1");
-
-            foreach (var claim in principal.Claims)
-            {
-                claim.SetDestinations(GetDestinations(claim, principal));
-            }
-
-            return SignIn(principal, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
+            return await HandleExchangeClientCredentialsGrantType(request);
         }
 
         throw new InvalidOperationException("The specified grant type is not supported.");
+    }
+
+    private async Task<IActionResult> HandleExchangeClientCredentialsGrantType(OpenIddictRequest request)
+    {
+        var application = await _applicationManager.FindByClientIdAsync(request.ClientId);
+        if (application == null)
+        {
+            throw new InvalidOperationException("The application details cannot be found in the database.");
+        }
+
+        // Create the claims-based identity that will be used by OpenIddict to generate tokens.
+        var identity = new ClaimsIdentity(
+            authenticationType: TokenValidationParameters.DefaultAuthenticationType,
+            nameType: Claims.Name,
+            roleType: Claims.Role);
+
+        // Add the claims that will be persisted in the tokens (use the client_id as the subject identifier).
+        identity.AddClaim(Claims.Subject, await _applicationManager.GetClientIdAsync(application));
+        identity.AddClaim(Claims.Name, await _applicationManager.GetDisplayNameAsync(application));
+
+        // Note: In the original OAuth 2.0 specification, the client credentials grant
+        // doesn't return an identity token, which is an OpenID Connect concept.
+        //
+        // As a non-standardized extension, OpenIddict allows returning an id_token
+        // to convey information about the client application when the "openid" scope
+        // is granted (i.e specified when calling principal.SetScopes()). When the "openid"
+        // scope is not explicitly set, no identity token is returned to the client application.
+
+        // Set the list of scopes granted to the client application in access_token.
+        var principal = new ClaimsPrincipal(identity);
+        principal.SetScopes(request.GetScopes());
+        principal.SetResources(await _scopeManager.ListResourcesAsync(principal.GetScopes()).ToListAsync());
+
+        foreach (var claim in principal.Claims)
+        {
+            claim.SetDestinations(GetDestinations(claim, principal));
+        }
+
+        return SignIn(principal, OpenIddictServerAspNetCoreDefaults.AuthenticationScheme);
     }
 
     private async Task<IActionResult> HandleExchangeCodeGrantType()
@@ -386,9 +382,6 @@ public class AuthorizationController : Controller
                 }));
         }
 
-        if (!principal.Claims.Any(claim => claim.Type == "idp"))
-            principal.AddClaim("idp", "T1");
-
         foreach (var claim in principal.Claims)
         {
             claim.SetDestinations(GetDestinations(claim, principal));
@@ -406,11 +399,6 @@ public class AuthorizationController : Controller
 
         switch (claim.Type)
         {
-            case "idp":
-                yield return Destinations.IdentityToken;
-
-                yield break;
-
             case Claims.Name:
                 yield return Destinations.AccessToken;
 

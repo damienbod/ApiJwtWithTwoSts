@@ -1,8 +1,7 @@
-﻿using Fido2Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace OpeniddictServer.Data;
+namespace IdentityProvider.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
@@ -11,12 +10,9 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
     }
 
-    public DbSet<FidoStoredCredential> FidoStoredCredential => Set<FidoStoredCredential>();
-
-    protected override void OnModelCreating(ModelBuilder builder)
+    // Override to include passkey model
+    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {
-        builder.Entity<FidoStoredCredential>().HasKey(m => m.Id);
-
-        base.OnModelCreating(builder);
+        base.ConfigureConventions(configurationBuilder);
     }
 }

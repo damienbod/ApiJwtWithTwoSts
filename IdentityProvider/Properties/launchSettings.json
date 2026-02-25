@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "OpeniddictServer": {
+    "IdentityProvider": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

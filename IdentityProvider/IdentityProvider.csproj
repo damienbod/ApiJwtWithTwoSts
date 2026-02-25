@@ -2,27 +2,31 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>728e892b-c8e1-40df-a44c-805a4a138e98</UserSecretsId>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>1868dd98-efec-444a-917c-8f7b0100025a</UserSecretsId>
     <!--<Nullable>enable</Nullable>-->
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fido2" Version="3.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="10.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="10.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="10.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.3" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Features" Version="5.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Features" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" PrivateAssets="All" Version="10.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
     <PackageReference Include="OpenIddict.AspNetCore" Version="7.2.0" />
     <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="7.2.0" />
     <PackageReference Include="OpenIddict.Quartz" Version="7.2.0" />
     <PackageReference Include="Quartz.Extensions.Hosting" Version="3.15.1" />
-	  <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
-	  <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.4" />
-  </ItemGroup>
 
+    <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="10.0.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.4" />
+  </ItemGroup>
 </Project>

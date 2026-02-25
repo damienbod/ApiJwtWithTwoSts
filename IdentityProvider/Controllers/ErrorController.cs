@@ -6,9 +6,9 @@
 
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
-using OpeniddictServer.ViewModels.Shared;
+using IdentityProvider.ViewModels.Shared;
 
-namespace OpeniddictServer.Controllers;
+namespace IdentityProvider.Controllers;
 
 public class ErrorController : Controller
 {

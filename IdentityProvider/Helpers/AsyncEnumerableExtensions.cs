@@ -1,4 +1,4 @@
-namespace OpeniddictServer.Helpers;
+namespace IdentityProvider.Helpers;
 
 public static class AsyncEnumerableExtensions
 {
