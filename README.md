@@ -12,6 +12,7 @@
 
 ## History
 
+- 2026-02-25 Updated packages, passkeys implementation
 - 2025-12-07 Updated .NET 10
 - 2025-09-21 Updated packages
 - 2025-08-03 Updated packages
