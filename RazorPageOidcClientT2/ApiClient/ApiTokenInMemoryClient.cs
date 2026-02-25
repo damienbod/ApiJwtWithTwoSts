@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using System.Collections.Concurrent;
 
-namespace RazorPageOidcClient;
+namespace RazorPageOidcClientT2;
 
 public class ApiTokenInMemoryClient
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RazorPageOidcClient.Pages;
+namespace RazorPageOidcClientT2.Pages;
 
 public class SignedOutModel : PageModel
 {

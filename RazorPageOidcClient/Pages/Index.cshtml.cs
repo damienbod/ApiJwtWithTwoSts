@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RazorPageOidcClient.Pages;
+namespace RazorPageOidcClientT2.Pages;
 
 [Authorize]
 public class IndexModel : PageModel

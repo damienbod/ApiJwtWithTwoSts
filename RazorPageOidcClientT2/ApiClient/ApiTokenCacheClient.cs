@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
 
-namespace RazorPageOidcClient;
+namespace RazorPageOidcClientT2;
 
 public class ApiTokenCacheClient
 {

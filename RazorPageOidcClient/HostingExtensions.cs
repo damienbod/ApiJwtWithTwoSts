@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using NetEscapades.AspNetCore.SecurityHeaders.Infrastructure;
 using Serilog;
 
-namespace RazorPageOidcClient;
+namespace RazorPageOidcClientT2;
 
 internal static class HostingExtensions
 {

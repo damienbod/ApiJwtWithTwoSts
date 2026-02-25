@@ -1,4 +1,4 @@
-﻿namespace RazorPageOidcClient;
+﻿namespace RazorPageOidcClientT2;
 
 public class AuthConfigurations
 {
