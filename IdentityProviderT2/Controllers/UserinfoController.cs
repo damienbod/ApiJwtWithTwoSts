@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OpenIddict.Abstractions;
 using OpenIddict.Server.AspNetCore;
-using OpeniddictServer.Data;
+using IdentityProvider.Data;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
-namespace OpeniddictServer.Controllers;
+namespace IdentityProvider.Controllers;
 
 public class UserinfoController : Controller
 {

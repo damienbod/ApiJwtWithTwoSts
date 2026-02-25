@@ -14,12 +14,12 @@
     </p>
     <p>
         Disabling 2FA does not change the keys used in authenticator apps. If you wish to change the key
-        used in an authenticator app you should <a asp-page="./ResetAuthenticator">reset your authenticator keys.</a>
+        used in an authenticator app you should <a asp-page="/Account/Manage/ResetAuthenticator">reset your authenticator keys.</a>
     </p>
 </div>
 
 <div>
-    <form method="post">
+    <form method="post" class="form-group">
         <button class="btn btn-danger" type="submit">Disable 2FA</button>
     </form>
 </div>

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace OpeniddictServer.Areas.Identity.Pages.Account;
+namespace IdentityProvider.Areas.Identity.Pages.Account;
 
 [AllowAnonymous]
 public class MfaModel : PageModel

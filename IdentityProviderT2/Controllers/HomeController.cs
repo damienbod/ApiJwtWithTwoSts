@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace OpeniddictServer.Controllers;
+namespace IdentityProvider.Controllers;
 
 public class HomeController : Controller
 {
@@ -12,6 +12,11 @@ public class HomeController : Controller
     }
 
     public IActionResult Index()
+    {
+        return View();
+    }
+
+    public IActionResult Privacy()
     {
         return View();
     }

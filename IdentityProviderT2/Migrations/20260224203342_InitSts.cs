@@ -1,11 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace IdentityProvider.Migrations
 {
-    public partial class addfido2 : Migration
+    /// <inheritdoc />
+    public partial class InitSts : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -35,7 +38,7 @@ namespace IdentityProvider.Migrations
                     PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
                     SecurityStamp = table.Column<string>(type: "TEXT", nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
                     TwoFactorEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
@@ -48,43 +51,25 @@ namespace IdentityProvider.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FidoStoredCredential",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserName = table.Column<string>(type: "TEXT", nullable: true),
-                    UserId = table.Column<byte[]>(type: "BLOB", nullable: true),
-                    PublicKey = table.Column<byte[]>(type: "BLOB", nullable: true),
-                    UserHandle = table.Column<byte[]>(type: "BLOB", nullable: true),
-                    SignatureCounter = table.Column<uint>(type: "INTEGER", nullable: false),
-                    CredType = table.Column<string>(type: "TEXT", nullable: true),
-                    RegDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    AaGuid = table.Column<Guid>(type: "TEXT", nullable: false),
-                    DescriptorJson = table.Column<string>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FidoStoredCredential", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "OpenIddictApplications",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
+                    ApplicationType = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
                     ClientId = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
                     ClientSecret = table.Column<string>(type: "TEXT", nullable: true),
+                    ClientType = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
                     ConcurrencyToken = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
                     ConsentType = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
                     DisplayName = table.Column<string>(type: "TEXT", nullable: true),
                     DisplayNames = table.Column<string>(type: "TEXT", nullable: true),
+                    JsonWebKeySet = table.Column<string>(type: "TEXT", nullable: true),
                     Permissions = table.Column<string>(type: "TEXT", nullable: true),
                     PostLogoutRedirectUris = table.Column<string>(type: "TEXT", nullable: true),
                     Properties = table.Column<string>(type: "TEXT", nullable: true),
                     RedirectUris = table.Column<string>(type: "TEXT", nullable: true),
                     Requirements = table.Column<string>(type: "TEXT", nullable: true),
-                    Type = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true)
+                    Settings = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -156,8 +141,8 @@ namespace IdentityProvider.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
-                    ProviderKey = table.Column<string>(type: "TEXT", nullable: false),
+                    LoginProvider = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "TEXT", nullable: true),
                     UserId = table.Column<string>(type: "TEXT", nullable: false)
                 },
@@ -166,6 +151,25 @@ namespace IdentityProvider.Migrations
                     table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserPasskeys",
+                columns: table => new
+                {
+                    CredentialId = table.Column<byte[]>(type: "BLOB", maxLength: 1024, nullable: false),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    Data = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserPasskeys", x => x.CredentialId);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserPasskeys_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -201,8 +205,8 @@ namespace IdentityProvider.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    LoginProvider = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
                     Value = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
@@ -256,7 +260,7 @@ namespace IdentityProvider.Migrations
                     ReferenceId = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),
                     Status = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
                     Subject = table.Column<string>(type: "TEXT", maxLength: 400, nullable: true),
-                    Type = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true)
+                    Type = table.Column<string>(type: "TEXT", maxLength: 150, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -292,6 +296,11 @@ namespace IdentityProvider.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
                 table: "AspNetUserLogins",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserPasskeys_UserId",
+                table: "AspNetUserPasskeys",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -344,6 +353,7 @@ namespace IdentityProvider.Migrations
                 unique: true);
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
@@ -356,13 +366,13 @@ namespace IdentityProvider.Migrations
                 name: "AspNetUserLogins");
 
             migrationBuilder.DropTable(
+                name: "AspNetUserPasskeys");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUserRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "FidoStoredCredential");
 
             migrationBuilder.DropTable(
                 name: "OpenIddictScopes");

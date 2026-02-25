@@ -1,9 +1,9 @@
 ﻿using OpenIddict.Abstractions;
-using OpeniddictServer.Data;
+using IdentityProvider.Data;
 using System.Globalization;
 using static OpenIddict.Abstractions.OpenIddictConstants;
 
-namespace OpeniddictServer;
+namespace IdentityProvider;
 
 public class Worker : IHostedService
 {

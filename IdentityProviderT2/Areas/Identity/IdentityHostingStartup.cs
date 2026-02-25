@@ -1,5 +1,5 @@
-﻿[assembly: HostingStartup(typeof(OpeniddictServer.Areas.Identity.IdentityHostingStartup))]
-namespace OpeniddictServer.Areas.Identity
+﻿[assembly: HostingStartup(typeof(IdentityProvider.Areas.Identity.IdentityHostingStartup))]
+namespace IdentityProvider.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {

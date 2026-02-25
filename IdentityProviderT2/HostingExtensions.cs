@@ -1,15 +1,14 @@
-using Fido2Identity;
-using Fido2NetLib;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
-using OpeniddictServer.Data;
+using IdentityProvider.Data;
+using IdentityProvider.Passkeys;
 using Quartz;
 using Serilog;
 using static OpenIddict.Abstractions.OpenIddictConstants;
+using Microsoft.IdentityModel.JsonWebTokens;
 
-namespace OpeniddictServer;
+namespace IdentityProvider;
 
 internal static class HostingExtensions
 {
@@ -21,9 +20,11 @@ internal static class HostingExtensions
         services.AddControllersWithViews();
         services.AddRazorPages();
 
+        services.AddHttpContextAccessor();
+
         services.AddDbContext<ApplicationDbContext>(options =>
         {
-            // Configure the context to use Microsoft SQL Server.
+            // Configure the context to use Microsoft SQLite.
             options.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
 
             // Register the entity sets needed by OpenIddict.
@@ -34,14 +35,13 @@ internal static class HostingExtensions
 
         services.AddDatabaseDeveloperPageExceptionFilter();
 
-        services.AddIdentity<ApplicationUser, IdentityRole>()
-          .AddEntityFrameworkStores<ApplicationDbContext>()
-          .AddDefaultTokenProviders()
-          .AddDefaultUI()
-          .AddTokenProvider<Fido2UserTwoFactorTokenProvider>("FIDO2");
-
-        services.Configure<Fido2Configuration>(configuration.GetSection("fido2"));
-        services.AddScoped<Fido2Store>();
+        services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+        {
+            options.Stores.SchemaVersion = IdentitySchemaVersions.Version3;
+        })
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders()
+        .AddDefaultUI();
 
         services.AddDistributedMemoryCache();
 
@@ -75,24 +75,8 @@ internal static class HostingExtensions
         // (like pruning orphaned authorizations/tokens from the database) at regular intervals.
         services.AddQuartz(options =>
         {
-            options.UseMicrosoftDependencyInjectionJobFactory();
             options.UseSimpleTypeLoader();
             options.UseInMemoryStore();
-        });
-
-        services.AddCors(options =>
-        {
-            options.AddPolicy("AllowAllOrigins",
-                builder =>
-                {
-                    builder
-                        .AllowCredentials()
-                        .WithOrigins(
-                            "https://localhost:4200")
-                        .SetIsOriginAllowedToAllowWildcardSubdomains()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                });
         });
 
         // Register the Quartz.NET service and configure it to block shutdown until jobs are complete.
@@ -116,13 +100,12 @@ internal static class HostingExtensions
             .AddServer(options =>
             {
                 // Enable the authorization, logout, token and userinfo endpoints.
-                options.SetAuthorizationEndpointUris("connect/authorize")
-                   //.SetDeviceEndpointUris("connect/device")
-                   .SetIntrospectionEndpointUris("connect/introspect")
-                   .SetEndSessionEndpointUris("connect/logout")
-                   .SetTokenEndpointUris("connect/token")
-                   .SetUserInfoEndpointUris("connect/userinfo")
-                   .SetEndUserVerificationEndpointUris("connect/verify");
+                options.SetAuthorizationEndpointUris("/connect/authorize")
+                    .SetEndSessionEndpointUris("/connect/logout")
+                    .SetIntrospectionEndpointUris("/connect/introspect")
+                    .SetTokenEndpointUris("/connect/token")
+                    .SetUserInfoEndpointUris("/connect/userinfo")
+                    .SetEndUserVerificationEndpointUris("/connect/verify");
 
                 // Note: this sample uses the code, device code, password and refresh token flows, but you
                 // can enable the other flows if you need to support implicit or client credentials.
@@ -177,28 +160,32 @@ internal static class HostingExtensions
         if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
+            app.UseMigrationsEndPoint();
         }
         else
         {
-            app.UseExceptionHandler("/Error");
+            app.UseStatusCodePagesWithReExecute("~/error");
+            //app.UseExceptionHandler("~/error");
+            //app.UseHsts();
         }
-
-        app.UseCors("AllowAllOrigins");
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
-
         app.UseRouting();
 
         app.UseAuthentication();
         app.UseAuthorization();
+        app.MapStaticAssets();
+        app.UseAntiforgery();
 
         app.UseSession();
 
+        app.MapPasskeyEndpoints();
+
         app.MapControllers();
         app.MapDefaultControllerRoute();
-        app.MapRazorPages();
-
+        app.MapRazorPages()
+            .WithStaticAssets();
 
         return app;
     }
