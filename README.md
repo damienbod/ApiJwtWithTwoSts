@@ -12,6 +12,7 @@
 
 ## History
 
+- 2026-09-06 Updated packages
 - 2026-07-29 Updated packages
 - 2026-05-17 Updated packages
 - 2026-02-25 Updated packages, passkeys implementation
