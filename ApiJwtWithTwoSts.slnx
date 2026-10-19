@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/BlazorClient/">
+    <Project Path="BlazorClient/Client/BlazorClient.Client.csproj" />
+    <Project Path="BlazorClient/Server/BlazorClient.Server.csproj" />
+    <Project Path="BlazorClient/Shared/BlazorClient.Shared.csproj" />
+  </Folder>
+  <Folder Name="/_SolutionItems/">
+    <File Path=".github/workflows/dotnet.yml" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="IdentityProvider/IdentityProvider.csproj" />
+  <Project Path="IdentityProviderT2/IdentityProviderT2.csproj" />
+  <Project Path="RazorPageOidcClient/RazorPageOidcClient.csproj" />
+  <Project Path="RazorPageOidcClientT2/RazorPageOidcClientT2.csproj" />
+  <Project Path="WebApi/WebApi.csproj" />
+</Solution>
