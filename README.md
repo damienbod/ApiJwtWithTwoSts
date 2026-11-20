@@ -64,7 +64,9 @@ dotnet tool install --global Aspire.Cli --version 13.6.5
 dotnet run --project ApiJwtWithTwoSts.AppHost
 ```
 
-The AppHost starts both identity providers, the Web API, both Razor Pages clients, and the Blazor Server host. It uses each project's existing Development launch profile and HTTPS ports, which are also used by the authentication configuration. Trust the ASP.NET Core development certificate before opening the applications in a browser:
+The AppHost starts both identity providers, the Web API, both Razor Pages clients, and the Blazor Server host. It uses each project's existing Development launch profile and HTTPS ports, which are also used by the authentication configuration. The hosted Blazor app does not open a browser window automatically; open the `blazor-client` endpoint from the Aspire dashboard when needed.
+
+Trust the ASP.NET Core development certificate before opening the applications in a browser:
 
 ```bash
 dotnet dev-certs https --trust
