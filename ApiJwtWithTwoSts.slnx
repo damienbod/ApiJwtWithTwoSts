@@ -8,6 +8,7 @@
     <File Path=".github/workflows/dotnet.yml" />
     <File Path="README.md" />
   </Folder>
+  <Project Path="ApiJwtWithTwoSts.AppHost/ApiJwtWithTwoSts.AppHost.csproj" />
   <Project Path="IdentityProvider/IdentityProvider.csproj" />
   <Project Path="IdentityProviderT2/IdentityProviderT2.csproj" />
   <Project Path="RazorPageOidcClient/RazorPageOidcClient.csproj" />
