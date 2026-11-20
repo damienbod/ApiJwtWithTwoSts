@@ -66,6 +66,8 @@ dotnet run --project ApiJwtWithTwoSts.AppHost
 
 The AppHost starts both identity providers, the Web API, both Razor Pages clients, and the Blazor Server host. It uses each project's existing Development launch profile and HTTPS ports, which are also used by the authentication configuration. The hosted Blazor app does not open a browser window automatically; open the `blazor-client` endpoint from the Aspire dashboard when needed.
 
+Both Razor Pages clients get their Web API base URL from the AppHost's `protected-api-url` parameter. The local value is set under `Parameters` in `ApiJwtWithTwoSts.AppHost/appsettings.Development.json`. To override it, set `Parameters__protected_api_url` on the AppHost. When running a Razor Pages client without Aspire, set `AuthConfigurations__ProtectedApiUrl` on that client instead.
+
 Trust the ASP.NET Core development certificate before opening the applications in a browser:
 
 ```bash
