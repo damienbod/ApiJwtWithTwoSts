@@ -14,6 +14,7 @@ var webApi = builder.AddDotnetProject("web-api", @"..\WebApi\WebApi.csproj")
     .WithExternalHttpEndpoints();
 
 builder.AddDotnetProject("razor-page-oidc-client", @"..\RazorPageOidcClient\RazorPageOidcClient.csproj")
+    .WithEnvironment("AuthConfigurations__IdentityProvider", identityProvider.GetEndpoint("https"))
     .WithEnvironment("AuthConfigurations__ProtectedApiUrl", webApi.GetEndpoint("https"))
     .WithReference(webApi)
     .WaitFor(webApi)
@@ -22,6 +23,7 @@ builder.AddDotnetProject("razor-page-oidc-client", @"..\RazorPageOidcClient\Razo
     .WithExternalHttpEndpoints();
 
 builder.AddDotnetProject("razor-page-oidc-client-t2", @"..\RazorPageOidcClientT2\RazorPageOidcClientT2.csproj")
+    .WithEnvironment("AuthConfigurations__IdentityProvider", identityProviderT2.GetEndpoint("https"))
     .WithEnvironment("AuthConfigurations__ProtectedApiUrl", webApi.GetEndpoint("https"))
     .WithReference(webApi)
     .WaitFor(webApi)

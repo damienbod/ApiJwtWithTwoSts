@@ -60,13 +60,13 @@ https://learn.microsoft.com/en-us/aspnet/core/security/authentication/
 Run the applications together from the Aspire dashboard:
 
 ```bash
-dotnet tool install --global Aspire.Cli --version 13.6.5
+dotnet tool install --global Aspire.Cli --version 17.0.0
 dotnet run --project ApiJwtWithTwoSts.AppHost
 ```
 
 The AppHost starts both identity providers, the Web API, both Razor Pages clients, and the Blazor Server host. It uses each project's existing Development launch profile and HTTPS ports, which are also used by the authentication configuration. The hosted Blazor app does not open a browser window automatically; open the `blazor-client` endpoint from the Aspire dashboard when needed.
 
-Both Razor Pages clients get their Web API base URL directly from the `web-api` resource's HTTPS endpoint. When running a Razor Pages client without Aspire, set `AuthConfigurations__ProtectedApiUrl` on that client instead.
+Both Razor Pages clients get their Web API base URL from the `web-api` HTTPS endpoint. Their OpenID Connect authorities come from the HTTPS endpoints of `identity-provider` (T1) and `identity-provider-t2` (T2), respectively. When running a Razor Pages client without Aspire, set `AuthConfigurations__ProtectedApiUrl` and `AuthConfigurations__IdentityProvider` on that client instead.
 
 Trust the ASP.NET Core development certificate before opening the applications in a browser:
 
