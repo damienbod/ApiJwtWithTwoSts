@@ -57,6 +57,16 @@ https://learn.microsoft.com/en-us/aspnet/core/security/authentication/
 
 ## Aspire
 
+Before running AppHost, set the Blazor OIDC client secret in local user secrets. Use the value registered for `codeflowpkceclient` in both identity providers:
+
+```powershell
+$secret = Read-Host -MaskInput 'Blazor OIDC client secret'
+dotnet user-secrets set 'Parameters:blazor-client-secret' $secret --project .\ApiJwtWithTwoSts.AppHost
+Remove-Variable secret
+```
+
+The public `blazor-client-id` parameter is set in `ApiJwtWithTwoSts.AppHost/appsettings.Development.json`. For other environments, supply `Parameters__blazor_client_id` and `Parameters__blazor_client_secret` to AppHost from your environment configuration and secret store.
+
 Run the applications together from the Aspire dashboard:
 
 ```bash
@@ -68,7 +78,7 @@ The AppHost starts both identity providers, the Web API, both Razor Pages client
 
 Both Razor Pages clients get their Web API base URL from the `web-api` HTTPS endpoint. Their OpenID Connect authorities come from the HTTPS endpoints of `identity-provider` (T1) and `identity-provider-t2` (T2), respectively. When running a Razor Pages client without Aspire, set `AuthConfigurations__ProtectedApiUrl` and `AuthConfigurations__IdentityProvider` on that client instead.
 
-The hosted Blazor app uses those same identity provider endpoints for its two login schemes. When running the Blazor server without Aspire, set `OpenIDConnectSettingsT1__Authority` and `OpenIDConnectSettingsT2__Authority` on the server. Aspire also supplies the Web API URL to the server, but the Blazor browser client still calls its own host.
+The hosted Blazor app uses those same identity provider endpoints for its two login schemes. Both schemes use the same client ID and secret, supplied to the server only. When running the Blazor server without Aspire, set `Authority`, `ClientId`, and `ClientSecret` for both `OpenIDConnectSettingsT1` and `OpenIDConnectSettingsT2` on the server (for example, `OpenIDConnectSettingsT1__ClientSecret`). Aspire also supplies the Web API URL to the server, but the Blazor browser client still calls its own host.
 
 Trust the ASP.NET Core development certificate before opening the applications in a browser:
 
