@@ -59,7 +59,7 @@ public class ApiTokenInMemoryClient
         {
             var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(
                 _httpClient,
-                _authConfigurations.Value.StsServer);
+                _authConfigurations.Value.IdentityProvider);
 
             if (disco.IsError)
             {

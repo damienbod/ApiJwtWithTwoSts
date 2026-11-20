@@ -29,7 +29,7 @@ internal static class HostingExtensions
         services.Configure<AuthConfigurations>(configuration.GetSection("AuthConfigurations"));
 
         var authConfigurations = configuration.GetSection("AuthConfigurations");
-        var stsServer = authConfigurations["StsServer"];
+        var identityProvider = authConfigurations["IdentityProvider"];
 
         services.AddAuthentication(options =>
         {
@@ -40,7 +40,7 @@ internal static class HostingExtensions
         .AddOpenIdConnect(options =>
         {
             options.SignInScheme = "Cookies";
-            options.Authority = stsServer;
+            options.Authority = identityProvider;
             options.RequireHttpsMetadata = true;
             options.ClientId = "codeflowpkceclient";
             options.ClientSecret = "codeflow_pkce_client_secret";

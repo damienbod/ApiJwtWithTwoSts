@@ -64,7 +64,7 @@ public class ApiTokenCacheClient
         {
             var disco = await HttpClientDiscoveryExtensions.GetDiscoveryDocumentAsync(
                 _httpClient,
-                _authConfigurations.Value.StsServer);
+                _authConfigurations.Value.IdentityProvider);
 
             if (disco.IsError)
             {
