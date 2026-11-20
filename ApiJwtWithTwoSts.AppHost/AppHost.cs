@@ -1,26 +1,26 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-var identityProvider = builder.AddProject<Projects.IdentityProvider>("identity-provider")
+var identityProvider = builder.AddDotnetProject("identity-provider", @"..\IdentityProvider\IdentityProvider.csproj")
     .WithExternalHttpEndpoints();
 
-var identityProviderT2 = builder.AddProject<Projects.IdentityProviderT2>("identity-provider-t2")
+var identityProviderT2 = builder.AddDotnetProject("identity-provider-t2", @"..\IdentityProviderT2\IdentityProviderT2.csproj")
     .WithExternalHttpEndpoints();
 
-var webApi = builder.AddProject<Projects.WebApi>("web-api")
+var webApi = builder.AddDotnetProject("web-api", @"..\WebApi\WebApi.csproj")
     .WithReference(identityProvider)
     .WaitFor(identityProvider)
     .WithReference(identityProviderT2)
     .WaitFor(identityProviderT2)
     .WithExternalHttpEndpoints();
 
-builder.AddProject<Projects.RazorPageOidcClient>("razor-page-oidc-client")
+builder.AddDotnetProject("razor-page-oidc-client", @"..\RazorPageOidcClient\RazorPageOidcClient.csproj")
     .WithReference(webApi)
     .WaitFor(webApi)
     .WithReference(identityProvider)
     .WaitFor(identityProvider)
     .WithExternalHttpEndpoints();
 
-builder.AddProject<Projects.RazorPageOidcClientT2>("razor-page-oidc-client-t2")
+builder.AddDotnetProject("razor-page-oidc-client-t2", @"..\RazorPageOidcClientT2\RazorPageOidcClientT2.csproj")
     .WithReference(webApi)
     .WaitFor(webApi)
     .WithReference(identityProviderT2)
@@ -29,7 +29,7 @@ builder.AddProject<Projects.RazorPageOidcClientT2>("razor-page-oidc-client-t2")
     .WaitFor(identityProvider)
     .WithExternalHttpEndpoints();
 
-builder.AddProject<Projects.BlazorClient_Server>("blazor-client")
+builder.AddDotnetProject("blazor-client", @"..\BlazorClient\Server\BlazorClient.Server.csproj")
     .WithReference(identityProvider)
     .WaitFor(identityProvider)
     .WithReference(identityProviderT2)
