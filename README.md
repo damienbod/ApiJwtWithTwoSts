@@ -68,6 +68,8 @@ The AppHost starts both identity providers, the Web API, both Razor Pages client
 
 Both Razor Pages clients get their Web API base URL from the `web-api` HTTPS endpoint. Their OpenID Connect authorities come from the HTTPS endpoints of `identity-provider` (T1) and `identity-provider-t2` (T2), respectively. When running a Razor Pages client without Aspire, set `AuthConfigurations__ProtectedApiUrl` and `AuthConfigurations__IdentityProvider` on that client instead.
 
+The hosted Blazor app uses those same identity provider endpoints for its two login schemes. When running the Blazor server without Aspire, set `OpenIDConnectSettingsT1__Authority` and `OpenIDConnectSettingsT2__Authority` on the server. Aspire also supplies the Web API URL to the server, but the Blazor browser client still calls its own host.
+
 Trust the ASP.NET Core development certificate before opening the applications in a browser:
 
 ```bash
