@@ -9,6 +9,7 @@
     <File Path="README.md" />
   </Folder>
   <Project Path="ApiJwtWithTwoSts.AppHost/ApiJwtWithTwoSts.AppHost.csproj" />
+  <Project Path="ApiJwtWithTwoSts.ServiceDefaults/ApiJwtWithTwoSts.ServiceDefaults.csproj" Id="62fb6f05-4526-4a59-9ced-e77e742b11c9" />
   <Project Path="IdentityProvider/IdentityProvider.csproj" />
   <Project Path="IdentityProviderT2/IdentityProviderT2.csproj" />
   <Project Path="RazorPageOidcClient/RazorPageOidcClient.csproj" />

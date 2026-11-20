@@ -29,4 +29,8 @@
     <PackageReference Include="Serilog.Sinks.Seq" Version="9.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="11.0.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiJwtWithTwoSts.ServiceDefaults\ApiJwtWithTwoSts.ServiceDefaults.csproj" />
+  </ItemGroup>
 </Project>

@@ -14,4 +14,8 @@
     <PackageReference Include="Serilog.AspNetCore" Version="11.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ApiJwtWithTwoSts.ServiceDefaults\ApiJwtWithTwoSts.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>
