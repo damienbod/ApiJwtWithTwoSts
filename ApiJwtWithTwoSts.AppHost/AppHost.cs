@@ -7,6 +7,8 @@ var identityProviderT2 = builder.AddProject<Projects.IdentityProviderT2>("identi
     .WithExternalHttpEndpoints();
 
 var webApi = builder.AddProject<Projects.WebApi>("web-api")
+    .WithReference(identityProvider)
+    .WaitFor(identityProvider)
     .WithReference(identityProviderT2)
     .WaitFor(identityProviderT2)
     .WithExternalHttpEndpoints();
@@ -28,6 +30,10 @@ builder.AddProject<Projects.RazorPageOidcClientT2>("razor-page-oidc-client-t2")
     .WithExternalHttpEndpoints();
 
 builder.AddProject<Projects.BlazorClient_Server>("blazor-client")
+    .WithReference(identityProvider)
+    .WaitFor(identityProvider)
+    .WithReference(identityProviderT2)
+    .WaitFor(identityProviderT2)
     .WithExternalHttpEndpoints();
 
 builder.Build().Run();
