@@ -12,6 +12,7 @@
 
 ## History
 
+- 2026-11-20 Add support for Aspire
 - 2026-11-19 .NET 11
 - 2026-10-19 Updated packages
 - 2026-09-06 Updated packages
