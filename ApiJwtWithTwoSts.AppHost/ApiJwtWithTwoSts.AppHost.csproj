@@ -1,0 +1,21 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.6.5">
+
+  <ItemGroup>
+    <ProjectReference Include="..\IdentityProvider\IdentityProvider.csproj" />
+    <ProjectReference Include="..\IdentityProviderT2\IdentityProviderT2.csproj" />
+    <ProjectReference Include="..\WebApi\WebApi.csproj" />
+    <ProjectReference Include="..\RazorPageOidcClient\RazorPageOidcClient.csproj" />
+    <ProjectReference Include="..\RazorPageOidcClientT2\RazorPageOidcClientT2.csproj" />
+    <ProjectReference Include="..\BlazorClient\Server\BlazorClient.Server.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AspireUseCliBundle>true</AspireUseCliBundle>
+    <UserSecretsId>f96b53db-c37e-4ea7-9be4-3aba8903ae4d</UserSecretsId>
+  </PropertyGroup>
+
+</Project>
