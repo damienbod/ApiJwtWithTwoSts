@@ -3,20 +3,20 @@ var builder = DistributedApplication.CreateBuilder(args);
 var blazorClientId = builder.AddParameter("blazor-client-id");
 var blazorClientSecret = builder.AddParameter("blazor-client-secret", secret: true);
 
-var identityProvider = builder.AddDotnetProject("identity-provider", @"..\IdentityProvider\IdentityProvider.csproj")
+var identityProvider = builder.AddDotnetProject("identity-provider", "../IdentityProvider/IdentityProvider.csproj")
     .WithExternalHttpEndpoints();
 
-var identityProviderT2 = builder.AddDotnetProject("identity-provider-t2", @"..\IdentityProviderT2\IdentityProviderT2.csproj")
+var identityProviderT2 = builder.AddDotnetProject("identity-provider-t2", "../IdentityProviderT2/IdentityProviderT2.csproj")
     .WithExternalHttpEndpoints();
 
-var webApi = builder.AddDotnetProject("web-api", @"..\WebApi\WebApi.csproj")
+var webApi = builder.AddDotnetProject("web-api", "../WebApi/WebApi.csproj")
     .WithReference(identityProvider)
     .WaitFor(identityProvider)
     .WithReference(identityProviderT2)
     .WaitFor(identityProviderT2)
     .WithExternalHttpEndpoints();
 
-builder.AddDotnetProject("razor-page-oidc-client", @"..\RazorPageOidcClient\RazorPageOidcClient.csproj")
+builder.AddDotnetProject("razor-page-oidc-client", "../RazorPageOidcClient/RazorPageOidcClient.csproj")
     .WithEnvironment("AuthConfigurations__IdentityProvider", identityProvider.GetEndpoint("https"))
     .WithEnvironment("AuthConfigurations__ProtectedApiUrl", webApi.GetEndpoint("https"))
     .WithReference(webApi)
@@ -25,7 +25,7 @@ builder.AddDotnetProject("razor-page-oidc-client", @"..\RazorPageOidcClient\Razo
     .WaitFor(identityProvider)
     .WithExternalHttpEndpoints();
 
-builder.AddDotnetProject("razor-page-oidc-client-t2", @"..\RazorPageOidcClientT2\RazorPageOidcClientT2.csproj")
+builder.AddDotnetProject("razor-page-oidc-client-t2", "../RazorPageOidcClientT2/RazorPageOidcClientT2.csproj")
     .WithEnvironment("AuthConfigurations__IdentityProvider", identityProviderT2.GetEndpoint("https"))
     .WithEnvironment("AuthConfigurations__ProtectedApiUrl", webApi.GetEndpoint("https"))
     .WithReference(webApi)
@@ -36,7 +36,7 @@ builder.AddDotnetProject("razor-page-oidc-client-t2", @"..\RazorPageOidcClientT2
     .WaitFor(identityProvider)
     .WithExternalHttpEndpoints();
 
-builder.AddDotnetProject("blazor-client", @"..\BlazorClient\Server\BlazorClient.Server.csproj")
+builder.AddDotnetProject("blazor-client", "../BlazorClient/Server/BlazorClient.Server.csproj")
     .WithEnvironment("OpenIDConnectSettingsT1__Authority", identityProvider.GetEndpoint("https"))
     .WithEnvironment("OpenIDConnectSettingsT1__ClientId", blazorClientId)
     .WithEnvironment("OpenIDConnectSettingsT1__ClientSecret", blazorClientSecret)
