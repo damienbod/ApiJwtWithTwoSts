@@ -14,6 +14,9 @@ internal static class HostingExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
+        // Add service defaults & Aspire client integrations.
+        builder.AddServiceDefaults();
+
         var services = builder.Services;
         var configuration = builder.Configuration;
 
