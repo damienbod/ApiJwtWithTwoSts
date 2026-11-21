@@ -12,26 +12,28 @@ internal static class HostingExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
-        var services = builder.Services;
         var configuration = builder.Configuration;
 
-        services.AddSecurityHeaderPolicies()
+        // Add service defaults & Aspire client integrations.
+        builder.AddServiceDefaults();
+
+        builder.Services.AddSecurityHeaderPolicies()
             .SetPolicySelector((PolicySelectorContext ctx) =>
             {
                 return SecurityHeadersDefinitions.GetHeaderPolicyCollection(builder.Environment.IsDevelopment());
             });
 
-        services.AddTransient<ApiService>();
-        services.AddSingleton<ApiTokenInMemoryClient>();
-        services.AddSingleton<ApiTokenCacheClient>();
+        builder.Services.AddTransient<ApiService>();
+        builder.Services.AddSingleton<ApiTokenInMemoryClient>();
+        builder.Services.AddSingleton<ApiTokenCacheClient>();
 
-        services.AddHttpClient();
-        services.Configure<AuthConfigurations>(configuration.GetSection("AuthConfigurations"));
+        builder.Services.AddHttpClient();
+        builder.Services.Configure<AuthConfigurations>(configuration.GetSection("AuthConfigurations"));
 
         var authConfigurations = configuration.GetSection("AuthConfigurations");
         var identityProvider = authConfigurations["IdentityProvider"];
 
-        services.AddAuthentication(options =>
+        builder.Services.AddAuthentication(options =>
         {
             options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
@@ -55,8 +57,8 @@ internal static class HostingExtensions
             };
         });
 
-        services.AddAuthorization();
-        services.AddRazorPages();
+        builder.Services.AddAuthorization();
+        builder.Services.AddRazorPages();
 
         return builder.Build();
     }
