@@ -11,14 +11,16 @@ internal static class StartupExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
-        var services = builder.Services;
         var configuration = builder.Configuration;
+
+        // Add service defaults & Aspire client integrations.
+        builder.AddServiceDefaults();
 
         var x509Certificate2 = GetCertificate(builder.Environment);
 
-        services.AddSingleton<IAuthorizationHandler, MyApiHandler>();
+        builder.Services.AddSingleton<IAuthorizationHandler, MyApiHandler>();
 
-        services.AddAuthentication(options =>
+        builder.Services.AddAuthentication(options =>
         {
             options.DefaultScheme = "SchemeStsA";
         })
@@ -65,7 +67,7 @@ internal static class StartupExtensions
         //    };
         //});
 
-        services.AddAuthorization(options =>
+        builder.Services.AddAuthorization(options =>
         {
             options.DefaultPolicy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
@@ -85,7 +87,7 @@ internal static class StartupExtensions
         //    })
         //);
 
-        services.AddControllers();
+        builder.Services.AddControllers();
 
         builder.Services.AddOpenApi(options =>
         {
