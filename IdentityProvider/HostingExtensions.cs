@@ -158,6 +158,8 @@ internal static class HostingExtensions
         IdentityModelEventSource.ShowPII = true;
         JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
+        app.MapDefaultEndpoints();
+
         app.UseSerilogRequestLogging();
 
         if (app.Environment.IsDevelopment())

@@ -112,6 +112,8 @@ internal static class StartupExtensions
         IdentityModelEventSource.ShowPII = true;
         JsonWebTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
+        app.MapDefaultEndpoints();
+
         app.UseSerilogRequestLogging();
 
         if (app.Environment.IsDevelopment())
